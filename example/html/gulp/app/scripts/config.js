@@ -1,0 +1,1 @@
+appconfig = {"appId":"devappid","apiUrl":"http://dev.chengyiwm.com"}

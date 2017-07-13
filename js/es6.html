@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6</title>
+</head>
+<body>
+<script>
+    // 1.let与 const
+    let s=Symbol();
+    console.log(typeof s)
+    /*const v="hello world";
+    (function () {
+        alert(v);
+        const v="I love you!";
+    })()*/
+    // 2.let与 const
+    /*var funcs=[];
+    for(var i=0;i<10;i++ ){
+        funcs.push((function (value) {
+            return value;
+        })(i))
+    }
+    for(let i=0;i<10;i++){
+        funcs.push(i)
+    }
+    console.log(funcs)*/
+    //3.模版字符串
+//    var name="kingx";
+//    console.log('hello'+name);
+//    const name="kingx";
+//    console.log(`hello ${name}`);
+    //4.数组解构
+    //对象
+//    const people={
+//        name:'kingx',
+//        age:20
+//    }
+//    const {name,age}=people;
+//    console.log(`${name} -------${age}`);
+    //5.张开运算符
+   /* const number=[1,2,3,4,5];
+    const [first,...rest]=number;
+    console.log(rest)*/
+</script>
+</body>
+</html>

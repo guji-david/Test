@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>element</title>
+    <link rel="stylesheet" href="element-ui/index.css">
+</head>
+<body>
+<div id="aaa">
+    <el-steps :space="80" :active="active" finish-status="wait">
+        <el-step title="步骤 1"></el-step>
+        <el-step title="步骤 2"></el-step>
+        <el-step title="步骤 3"></el-step>
+    </el-steps>
+
+    <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+
+    <el-steps :space="100" :active="2" finish-status="success">
+        <el-step title="已完成"></el-step>
+        <el-step title="进行中"></el-step>
+        <el-step title="步骤 3"></el-step>
+    </el-steps>
+
+    <el-steps :space="200" :active="2">
+        <el-step title="步骤 1" description="这是一段很长很长很长的描述性文字"></el-step>
+        <el-step title="步骤 2" description="这是一段很长很长很长的描述性文字"></el-step>
+        <el-step title="步骤 3" description="这是一段很长很长很长的描述性文字"></el-step>
+    </el-steps>
+
+    <el-steps :space="100" :active="2">
+        <el-step title="步骤 1" icon="edit"></el-step>
+        <el-step title="步骤 2" icon="upload"></el-step>
+        <el-step title="步骤 3" icon="picture"></el-step>
+    </el-steps>
+
+    <el-steps :space="100" direction="vertical" :active="2">
+        <el-step title="步骤 1"></el-step>
+        <el-step title="步骤 2"></el-step>
+        <el-step title="步骤 3"></el-step>
+        <el-step title="步骤 4"></el-step>
+        <el-step title="步骤 5"></el-step>
+        <el-step title="步骤 6"></el-step>
+        <el-step title="步骤 7"></el-step>
+    </el-steps>
+</div>
+
+
+<script src="js/vue.js"></script>
+<script src="element-ui/index.js"></script>
+<script src="js/vue04.js"></script>
+</body>
+</html>

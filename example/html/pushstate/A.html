@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>  pushstate测试</title>
+</head>
+<body>
+<div>
+    pushstate测试
+</div>
+<script >
+    (function (){
+        var stateObj = { foo: "bar12321321" };
+//        history.pushState(stateObj, "page 1232132", "bar1.html");
+        history.replaceState(stateObj, "page 1232132", "A.html");
+    })()
+
+</script>
+</body>
+</html>

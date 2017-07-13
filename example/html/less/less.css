@@ -1,0 +1,12 @@
+.outer {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+.outer .inner {
+  height: 50px;
+  background: blue;
+}
+.outer .inner span {
+  color: olive;
+}

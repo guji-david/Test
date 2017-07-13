@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+   /* function page_list(){
+        alert("shihuan");
+    }
+    setInterval(page_list,1000)*/
+   function setLotteryOpenId(lotteryOpenId) {
+       return localStorage.setItem("lotteryOpenId", lotteryOpenId);
+   }
+
+   // 获取当前用户登录的 lotteryOpenId
+   function getLotteryOpenId() {
+       return localStorage.getItem("lotteryOpenId")?localStorage.getItem("lotteryOpenId"):null;
+   }
+   setLotteryOpenId("1232132");
+   console.log("getLotteryOpenId-------------->"+getLotteryOpenId());
+   console.log("typeof(getLotteryOpenId())-------------->"+typeof(getLotteryOpenId()) );
+   console.log("getLotteryOpenId=null--------->"+(getLotteryOpenId()==null));
+   console.log("getLotteryOpenId=null--------->"+(getLotteryOpenId()=='null'));
+
+
+
+
+
+
+
+
+
+   localStorage.setItem("name",false);
+
+   console.log( "localStorage.getItem---------------->"+localStorage.getItem("name"));
+   console.log( "localStorage.getItem--------typeof-------->"+typeof (localStorage.getItem("name")));
+   console.log( "localStorage.getItem--是否等于false-------->"+(localStorage.getItem("name")==false));
+   console.log( "localStorage.getItem--是否等于'false'-------->"+(localStorage.getItem("name")=='false'));
+</script>
+</body>
+</html>
