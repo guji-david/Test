@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>代理模式A</title>
+</head>
+<body>
+<script>
+   /*-----------------------代理模式A----------------------------------------*/
+   /* var Flower=function(){};
+    var xiaomign={
+        sendFlower:function(target){
+            var flower=new Flower();
+            target.receiveFlower(flower);
+        }
+    }
+    var A={
+        receiveFlower:function(flower){
+            console.log('收到花'+flower);
+        }
+    }
+    xiaomign.sendFlower(A);*/
+   /*-----------------------代理模式B----------------------------------------*/
+    var Flower=function(){};
+    var xiaomign={
+        sendFlower:function(target){
+            var flower=new Flower();
+            target.receiveFlower(flower);
+        }
+    };
+    var B={
+        receiveFlower:function(flower){
+            A.listenGoodMood(function(){
+                A.receiveFlower(flower);
+            });
+        }
+    }
+    var A={
+        receiveFlower:function(flower){
+            console.log('收到花'+flower);
+        },
+        listenGoodMood:function(fn){
+            setTimeout(function(){
+                fn();
+            },2000)
+        }
+    }
+    xiaomign.sendFlower(B);
+</script>
+</body>
+</html>

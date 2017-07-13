@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>跨选择器</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $_span=$("span");
+            var $_div=$("div");
+            $_span.click(function(){
+                alert(12312);
+                $_div.hide();
+            })
+            var id=$("#111");
+            console.log(id.siblings());
+        })
+
+    </script>
+</head>
+<style>
+    div{
+        height: 400px;
+        width: 400px;
+        background-color: red;
+    }
+</style>
+<body>
+    <span>点击我</span>
+    <div></div>
+
+    <div>
+        <ul id="111">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul id="222">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul id="333">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+</html>

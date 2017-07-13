@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>基础</title>
+</head>
+<body >
+<canvas id="canvas" style="display: block;margin: 0 auto;border: 1px solid #aaa">
+    您的浏览器不支持canvas
+</canvas>
+<script>
+    window.onload=function(){
+        var canvas=document.getElementById("canvas");
+        canvas.width=800;
+        canvas.height=800;
+        var context=canvas.getContext("2d");
+
+        var lineearGrad=context.createLinearGradient(0,0,400,400);
+        lineearGrad.addColorStop(0.0,'#fff');
+        lineearGrad.addColorStop(0.25,'yellow');
+        lineearGrad.addColorStop(0.50,'green');
+        lineearGrad.addColorStop(0.75,'blue');
+        lineearGrad.addColorStop(1.0,'#000');
+        context.fillStyle=lineearGrad;
+        context.fillRect(0,0,800,800);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="inputModel" />
+<select name="EngineModel" size="10" style="height: auto; margin-left: 120px; position: absolute; display: none;"></select>
+<script type="text/javascript"src="jquery.js"></script>
+
+<script>
+    //获取select
+    var engine = $('select[name="EngineModel"]');
+    //页面加载，初始赋值select选项
+   /* $.get('engines.aspx', function (engineModels) {
+        engines = eval(engineModels);
+        for (var i = 0; i < engines.length; i++) {
+            engine.append('<option>' + engines[i].Model + '</option>');
+        }
+    })*/
+    //for (var i in engines) {
+    //            engine.append('<option>' + engines[i] + '</option>');
+    //        }
+
+    //绑定值至select（可用于修改）
+    if ('<%=order.EngineModel%>') {
+        engine.val('<%=order.EngineModel%>');
+    }
+
+    //select的change事件，选中的值赋给input
+    $('input[name="EngineModel"]').change(function() {
+        document.getElementById('inputModel').value = document.getElementById('SelectModel').options[document.getElementById('SelectModel').selectedIndex].value;
+    })
+
+    //可编辑select具体实现
+    var focus = false;
+    $("#inputModel").focus(function () {
+        focus = true;
+        $(this).next().css('display', 'block');
+    }).blur(function () {
+        if (focus) {
+            $(this).next().css('display', 'none');
+        }
+    }).keyup(function () {
+        var queryCondition = $("#inputModel").val().toLowerCase();
+        if (queryCondition.length != 0) {
+            engine.empty();
+            for (var i in engines) {
+                if (engines[i].toLowerCase().indexOf(queryCondition) != -1) {
+                    engine.append('<option>' + engines[i] + '</option>');
+                }
+            }
+        } else {
+            for (var i in engines) {
+                engine.append('<option>' + engines[i] + '</option>');
+            }
+        }
+    }).next().mousedown(function () {
+        focus = false;
+    }).change(function () {
+        $(this).css('display', 'none').prev().val(this.value);
+    });
+</script>
+
+</body>
+</html>
