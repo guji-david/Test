@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Index</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-translate.min.js"></script>
+    <script src="../js/loader-static-files.min.js"></script>
+    <script type="text/javascript">
+        var app=angular.module("app",['pascalprecht.translate']);
+        app.config(['$translateProvider',function($translateProvider){
+           /* $translateProvider.translations('zh-cn',{
+                'hello':'你好',
+                'apple':'梨',
+            });
+            $translateProvider.preferredLanguage('zh-cn');
+            */
+            $translateProvider.useStaticFilesLoader({
+                'prefix':'/il8n/',
+                'suffix':'json',
+            });
+            $translateProvider.preferredLanguage('en-us');
+        }]);
+    </script>
+</head>
+<body>
+
+        <h1>{{"hello" |translate}}</h1>
+        <h1>{{"apple" |translate}}</h1>
+        <h1>{{"xpy0928" |translate}}</h1>
+</body>
+</html>

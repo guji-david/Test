@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>烟花效果</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+            overflow: hidden;
+        }
+        .firework{
+            position: absolute;
+            width:10px;
+            height: 50px;
+            background: #f00;
+            border-radius: 50%;
+        }
+        .fires{
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    /*面向过程
+    1.生成子弹。
+    2.子弹移动端鼠标点击的位置
+    3.生成
+    4.烟花粒子散开
+     面向对象
+    */
+
+//    1.生成子弹
+    document.onclick=function(ev){
+//        获取鼠标的坐标位置
+//        console.log(this)//this的作用域
+//        console.log(arguments)//实参的列表
+//        console.log(ev)//实参的列表
+        var ev=ev||window.event;
+        var x=ev.clientX,
+             y=ev.clientY;
+        var h=window.innerHeight;
+        //生成烟花
+        firework(x,y,h);
+
+    };
+    var timer=null;
+    function firework(x,y,h){
+        var oDiv=document.createElement("div");
+        oDiv.className="firework";
+        oDiv.style.left=x+"px";
+        oDiv.style.top=h+"px";
+        oDiv.style.backgroundColor=color2();
+        document.body.appendChild(oDiv);
+        //让子弹往上面移动
+        var speed=-10;
+        //定时器 多少毫秒执行一次里面的函数
+        timer=setInterval(function(){
+            oDiv.style.top=oDiv.offsetTop+speed+"px";
+            if(oDiv.offsetTop<=y){
+                clearInterval(timer);
+                //先清除子弹
+                document.body.removeChild(oDiv);
+                //生成烟花粒子
+                createFires(x,y,h);
+            }
+        },1000/60)
+    }
+    //3.生成烟花粒子
+    var ball=null;
+    function createFires(x,y,h){
+        var n=Math.ceil(Math.random()*50+50);//50-100
+        var fires=[];
+        for(var i=0;i<n;i++){
+            fires[i]=document.createElement("div");
+            fires[i].className="fires";
+            fires[i].style.left=x+"px";
+            fires[i].style.top=y+"px";
+            fires[i].style.backgroundColor=color2();
+            fires[i].speedX=Math.random()*20-10;//-10-10
+            fires[i].speedY=Math.random()*20-10;//-10-10
+            document.body.appendChild(fires[i]);
+        }
+        ball=setInterval(function(){
+            for(var j=0;j<n;j++){
+                fires[j].style.left=fires[j].offsetLeft+ fires[j].speedX+"px";
+                fires[j].style.top=fires[j].offsetTop+ fires[j].speedY+"px";
+                fires[j].speedY+=1;
+              //对烟花粒子范围控制
+                if( fires[j].offsetLeft<0|| fires[j].offsetLeft>window.innerWidth||fires[j].offsetTop>h){
+                    document.body.appendChild(fires[j]);
+                }
+            }
+        },1000/30)
+    }
+
+    //生成随机颜色
+    //方法一 rgb 0-255
+    function color1(){
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        return "rgb("+r+","+g+","+b+")";
+    }
+
+    //方法二 十六进制值 0-9 a-f
+    function color2(){
+        return  "#"+function(color){
+                    //生成一个十六进制的数
+                    return new Array(7-color.length).join("0")+color;
+                }((Math.random()*0x1000000<<0).toString(16))
+    }
+
+console.log(color2())
+console.log(new Array(1).join("0"))
+console.log(Math.random()*10)
+console.log(Math.random()*10<<0)
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>element</title>
+    <link rel="stylesheet" href="element-ui/index.css">
+</head>
+<body>
+<div id="aaa">
+    <el-tag
+            v-for="tag in tags"
+            :closable="true"
+            :type="tag.type"
+            :key="tag"
+            :close-transition="false"
+            @close="handleClose(tag)"
+    >
+        {{tag.name}}
+    </el-tag>
+
+
+
+    <el-progress :percentage="0"></el-progress>
+    <el-progress :percentage="70"></el-progress>
+    <el-progress :percentage="100" status="success"></el-progress>
+    <el-progress :percentage="50" status="exception"></el-progress>
+
+    <el-progress :text-inside="true" :stroke-width="18" :percentage="0"></el-progress>
+    <el-progress :text-inside="true" :stroke-width="18" :percentage="70"></el-progress>
+    <el-progress :text-inside="true" :stroke-width="18" :percentage="100" status="success"></el-progress>
+    <el-progress :text-inside="true" :stroke-width="18" :percentage="50" status="exception"></el-progress>
+
+    <el-progress type="circle" :percentage="0"></el-progress>
+    <el-progress type="circle" :percentage="15"></el-progress>
+    <el-progress type="circle" :percentage="60" status="success"></el-progress>
+    <el-progress type="circle" :percentage="50" status="exception"></el-progress>
+    <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+
+    <el-badge :value="12" class="item">
+        <el-button size="small">评论</el-button>
+    </el-badge>
+    <el-badge :value="3" class="item">
+        <el-button size="small">回复</el-button>
+    </el-badge>
+
+    <el-dropdown trigger="click">
+  <span class="el-dropdown-link">
+    点我查看<i class="el-icon-caret-bottom el-icon--right"></i>
+  </span>
+        <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item class="clearfix">
+                评论
+                <el-badge class="mark" :value="12" />
+            </el-dropdown-item>
+            <el-dropdown-item class="clearfix">
+                回复
+                <el-badge class="mark" :value="3" />
+            </el-dropdown-item>
+        </el-dropdown-menu>
+    </el-dropdown>
+
+
+
+
+
+</div>
+
+<script src="js/vue.js"></script>
+<script src="element-ui/index.js"></script>
+<script src="js/vue03.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>element</title>
+    <link rel="stylesheet" href="element-ui/index.css">
+</head>
+<body>
+<div id="aaa">
+    <input type="text" v-model="inputValue">
+    <h1>{{changeVaule}}</h1>
+    <el-table
+            :data="tableData2"
+            style="width: 100%"
+            :row-class-name="tableRowClassName"
+           >
+        <el-table-column
+                v-show="false"
+                prop="date"
+                label="日期"
+                width="180">
+        </el-table-column>
+        <el-table-column
+                prop="name"
+                label="姓名"
+                width="180">
+        </el-table-column>
+        <el-table-column
+                prop="address"
+                label="地址">
+        </el-table-column>
+    </el-table>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script src="element-ui/index.js"></script>
+<script src="js/vue05.js"></script>
+</body>
+</html>
