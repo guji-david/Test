@@ -17,11 +17,13 @@
     }*/
    var array={};
     var is_array = function(value) {
-//        return value && typeof value === 'object' && typeof value.length === 'number' && typeof value.splice === 'function' && !(value.propertyIsEnumerable('length'));
-        return value&&typeof value==='object'&&
         return value && typeof value === 'object' && typeof value.length === 'number' && typeof value.splice === 'function' && !(value.propertyIsEnumerable('length'));
     };
+    var is_array2= function(value) {
+        return Object.prototype.toString.call(value) == '[object Array]';
+    };
    console.log(is_array(array));
+   console.log(is_array2(array));
    function MyObject() {
        this.name = "我是实例的属性";
    }
@@ -44,6 +46,26 @@
    document.write(arr + "<br />");
    arr.splice(2,3,"William");
    document.write(arr + "<br />");
+
+
+   var toString = Object.prototype.toString;
+
+   console.log(toString.call([123]));//[object Array]
+   console.log(toString.call('123'));//[object String]
+   console.log(toString.call({a: '123'}));//[object Object]
+   console.log(toString.call(/123/));//[object RegExp]
+   console.log(toString.call(123));//[object Number]
+   console.log(toString.call(undefined));//[object Undefined]
+   console.log(toString.call(null));//[object Null]
+        var a;
+    console.log(typeof a);
+    console.log(typeof undefined);
+   console.log(![]);
+   console.log(![]==[]);
+    var foo="11"+2;
+   console.log(foo);
+   console.log( typeof foo);
+
 </script>
 </body>
 </html>

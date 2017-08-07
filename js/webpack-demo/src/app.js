@@ -7,8 +7,8 @@ const App =function () {
    var dom=document.getElementById('app');
    var layer=new Layer();
    dom.innerHTML=layer.tpl({
-       name:'david',
-       arr:['a','b','c']
+       name:'david1',
+       arr:['a','b','c','d']
    });
 }
 new App();

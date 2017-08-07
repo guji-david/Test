@@ -1,5 +1,7 @@
 var path = require("path")
+var webpack = require("webpack")
 var htmlWebpackPlugin=require("html-webpack-plugin")
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -51,6 +53,7 @@ module.exports ={
         ]
     },
     plugins: [
+        new OpenBrowserPlugin({ url: 'http://localhost:4000' }),
         new htmlWebpackPlugin({
             filename:'index.html',
             template:"index.html",
@@ -62,6 +65,7 @@ module.exports ={
             }*/
 
         }),
+        new webpack.HotModuleReplacementPlugin()
 
     ]
 }
