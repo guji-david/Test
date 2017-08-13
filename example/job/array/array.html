@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+<script type="text/javascript">
+    //编写一个javascript函数fn,该函数有一个参数n(数字类型),其返回值是一个数组,该数组内有n个随机且不重复的整数,且整数范围是[2,32];
+    var test = function(n){
+        if (n < 0 || typeof n !== 'number' || n % 1 !== 0) {
+            return [];
+        }else{
+//------------------------------第一种方案--------------------------------
+          /*  var list = [];
+            for (var i = 0; i < n; i++) {
+                var rNum = Math.random()
+                rNum = Math.floor(rNum*30+2);
+                if (list.includes(rNum)) {
+                    i -= 1
+                }else{
+                    list.push(rNum)
+                }
+            }
+            return list;
+        }*/
+            //------------------------------第二种方案--------------------------------
+
+            //随机数最小值与最大值
+            let minRange=2;
+            let maxRange=32;
+            //初始化一个 Set 数据类型
+            let num=new Set();
+            let length=maxRange-minRange+1;
+            if(n>length){
+            return []}
+            while(num.size<n){
+                //产生随机数加入到 Set 中
+                num.add(Math.floor(Math.random()*length)+minRange);
+            }
+            //将Set转为Array
+            return Array.from(num);
+        }
+    };
+    console.log(test(4))
+</script>
+</body>
+</html>
