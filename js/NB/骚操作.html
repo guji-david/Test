@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript骚操作</title>
+</head>
+<body>
+</body>
+<script>
+    /*------------------------------1.5种方式实现值交换----------------------*/
+    /*
+     //        1.传统,但需要借助临时变量
+     var temp=a;a=b;b=temp;
+     //        2.需要两个整数
+     a^=b;  b^=a;  a^=b;
+     //        3.借助数组
+     b=[a,a=b][0];
+     //        4.ES6,解构赋值
+     [a,b]=[b,a];
+     //        5.小学奥赛题
+     a=a+b; b=a-b;a=a-b;
+     */
+
+    /*------------------------------2.去掉小数部分----------------------*/
+    //        1.parseInt(num)
+    parseInt(1.23);
+    //        2.~~num
+    ~~1.23;
+    //        3.num>>0
+    1.23>>0;
+    //        4.num|0;
+    1.23|0;
+    /*------------------------------3.判断x是否是整数----------------------*/
+    function isInt(x) {
+//            return (x^0)===x;
+//            return Math.round(x)===x;
+//            return (typeof x==='number')&&(x%1===0)
+        return Number.isInteger(x)
+    }
+    /*------------------------------4.递归求阶乘----------------------*/
+    function factorial(n) {
+        return (n>1)?n*factorial(n-1):n
+    }
+    console.log(factorial(3))
+    /*------------------------------5.判断符号是否相同----------------------*/
+    function sameSign(a,b) {
+        return (a^b)>=0
+    }
+    console.log(sameSign(3,-4));
+    /*------------------------------6.克隆数组----------------------*/
+    //        arr.slice(0);
+    var arr = new Array(3)
+    arr[0] = "George"
+    arr[1] = "John"
+    arr[2] = "Thomas"
+
+    document.write(arr + "<br />")
+    document.write(arr.slice(0) + "<br />")
+    document.write(arr+ "<br />")
+    /*------------------------------7.数组去重----------------------*/
+    var arr7=[1,2,3,3,3,4,4,4];
+    //                ES6
+    document.write(Array.from(new Set(arr7)) + "<br />");
+    //                ES5
+    arr77=arr7.filter(function (ele,index,array) {
+        return index===array.indexOf(ele);
+    })
+    document.write(arr7+ "<br />")
+    document.write(arr77+ "<br />")
+    /*------------------------------7.数组最大值 最小值----------------------*/
+    function maxArr(arr) {
+        return Math.max.apply(null,arr);
+    }
+    function minArr(arr) {
+        return Math.min.apply(null,arr);
+    }
+    /*------------------------------8.随机获取数组的一个成员----------------------*/
+    function randomOne(arr) {
+        return arr[Math.floor(Math.random()*arr.length)]
+    }
+
+    /*------------------------------9.产生随机颜色----------------------*/
+    //方法一 rgb 0-255
+    function color1(){
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        return "rgb("+r+","+g+","+b+")";
+    }
+    //方法二 十六进制值 0-9 a-f
+    function color2(){
+        return  `#${Math.random().toString(16).substr(2,6)}`
+    }
+    console.log(color2());
+    //方法三 十六进制值 0-9 a-f
+    function color3(){
+        return  "#"+function(color){
+                //生成一个十六进制的数
+                return new Array(7-color.length).join("0")+color;
+            }((Math.random()*0x1000000<<0).toString(16))
+    }
+    /*------------------------------10.随机生成指定长度的字符串----------------------*/
+    function randomStr(n) {
+        let standard='abcdefghijklmnopqrstuvwxyz9876543210';
+        let len=standard.length;
+        let result='';
+        for(let i=0;i<n;i++){
+            result+=standard.charAt(Math.floor(Math.random()*len))
+        }
+        return result;
+    }
+    console.log(randomStr(12));
+    /*------------------------------11.深拷贝----------------------*/
+    //        JSON.parse(JSON.stringify(obj))
+    /*------------------------------12.console----------------------*/
+    console.log(([][[]]+[])[+!![]]+([]+{})[!+[]+!![]]);
+    console.log((!(~+[])+{})[--[~+''][+[]]*[~+[]]+~~!+[]]+({}+[])[[~!+[]]*~+[]]);
+    /*------------------------------13.美化console----------------------*/
+
+    function log_info(str1,str) {
+        let temp=true;
+        if(temp){
+            console.info(str1+"-------------->"+"%c"+JSON.stringify(str),"color:#3190e8;font-size:15px;font-family:sans-serif" );
+        }
+
+    }
+    var number={a:"23",b:"浮动"};
+    log_info("number",number)
+</script>
+</html>
