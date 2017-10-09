@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+
+</head>
+<body>
+<script>
+    /*x = {shift:[].shift};
+    x.shift();
+    console.info(x.length);*/
+
+  /*  x = {};
+    Array.prototype.shift.call(x);
+    console.info(x.length);*/
+
+   /* x = function (a, b, c) {};
+    Array.prototype.shift.call(x);
+    console.info(x.length);*/
+
+    Array.prototype.forEach.call(arguments, function(i) {
+        console.info(i);
+    });
+
+
+
+
+
+</script>
+</body>
+</html>

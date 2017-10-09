@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>memorize</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*------------------------------第一种情况-------------------------------------*/
+
+  /*
+   function memoize(f) {
+   var cache={};
+   return function () {
+   var key=arguments.length+Array.prototype.join.call(arguments,",");
+   if(key in cache){
+   return cache[key]
+   }else{
+   return cache[key]=f.apply(this,arguments)
+   }
+   }
+   }
+    var add=function (a,b,c) {
+        return a+b+c;
+    }
+    var memoizeAdd=memoize(add);
+    console.time('use memoize');
+    for(var i=0;i<100000;i++){
+        memoizeAdd(1,2,3)
+    }
+    console.timeEnd('use memoize');
+    console.time('not use memoize');
+    for(var i=0;i<100000;i++){
+        add(1,2,3)
+    }
+    console.timeEnd('not use memoize');*/
+    /*------------------------------第二种情况-------------------------------------*/
+    function memoize(f) {
+        var cache={};
+        return function () {
+            var key=arguments.length+Array.prototype.join.call(arguments,",");
+            if(key in cache){
+                return cache[key]
+            }else{
+                return cache[key]=f.apply(this,arguments)
+            }
+        }
+    }
+    var propValue=function (obj) {
+        return obj.value
+    }
+    var memoizeAdd=memoize(propValue);
+    console.log(memoizeAdd({value:1}));
+    console.log(memoizeAdd({value:2}));
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@
         /*移花接木之----call和apply 主要是解决改变函数中this的指向---*/
 //        ----------------------------------call第一种情况-------------------------------------------
         //call，apply是Function函数对象自带的两个方法，改变函数的this指向
-    /*    function a(){
+      /*  function a(){
             console.log(this);
         }
         a.call();
@@ -19,8 +19,8 @@
         function b(){}
         a.call(b);
        var obj={name:'onepixel'};
-        a.call(obj);*/
-
+        a.call(obj);
+*/
 //        ----------------------------------call第二种情况-------------------------------------------
        /* var a={
             name:'onepixel',
@@ -34,17 +34,16 @@
           console.log('I am:'+this.name);//I am:onepixel
           this.say();//Hi,I am function a!
       }
-        b.call(a,'test');*/
-
+        b.call(a,'test');
+*/
 //        ----------------------------------apply第一种情况-------------------------------------------
 
-    /*   function b(x,y,z){
+     /*  function b(x,y,z){
            console.log(x,y,z);//1 2 3
        }
-        b.apply(null,[1,2,3]);
-*/
+        b.apply(null,[1,2,3]);*/
 //        ----------------------------------apply应用场景一：继承-------------------------------------------
-      /*  function Animal(name,weight){
+        /*function Animal(name,weight){
             this.name=name;
             this.weight=weight;
         }
@@ -59,17 +58,16 @@
         var cat=new Cat();
         cat.say();*/
 //                ----------------------------------apply应用场景一：移花接木-------------------------------------------
-      /*  function test(){
+       /* function test(){
             console.log(arguments instanceof  Array,Array.isArray(arguments));
             Array.prototype.forEach.call(arguments,function(item){
                 console.log(item);
             })
         }
-        test(1,2,3,4);*/
+        test(1,2,3,4);
      var arr=[2,4,6,8,12,3,5];
    var max= Math.max.apply(null,arr);
-        console.log(max);
-
+        console.log(max);*/
 
 </script>
 <body>

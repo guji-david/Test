@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>model</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*-----------------------------------1.单例模式-----------------------------------------------*/
+    var singleton = function( fn ){
+        var result;
+        return function(){
+            return result || ( result = fn .apply( this, arguments ) );
+        }
+    }
+    var createMask = singleton( function(){
+
+        return document.body.appendChild( document.createElement('div') );
+
+    })
+    /*-----------------------------------2. 简单工厂模式-----------------------------------------------*/
+    function A( name ){
+
+        this.name = name;
+
+    }
+
+    function ObjectFactory(){
+
+        var obj = {}, Constructor = Array.prototype.shift.call( arguments );
+
+        obj.__proto__ =  typeof Constructor .prototype === 'number'  ? Object.prototype : Constructor .prototype;
+
+        var ret = Constructor.apply( obj, arguments );
+
+        return typeof ret === 'object' ? ret : obj;
+
+    }
+
+    var a = ObjectFactory( A, 'svenzeng' );
+
+    alert ( a.name );  //svenzeng
+</script>
+</body>
+</html>
