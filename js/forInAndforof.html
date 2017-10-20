@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环大比拼</title>
+</head>
+<body>
+<script type="text/javascript">
+    var myArry =[1,2,3,4];
+    myArry.desc ='four';
+    for(var value in myArry){ //循环key
+        console.log(value)
+    }
+
+    //"0"
+    //"1"
+    //"2"
+    //"3"
+    //"desc" 注意这里添加上去的属性也被遍历出来了
+
+    var myArry2 =[1,2,3,4];
+    myArry2.desc ='four';
+    for(var value of myArry2){
+        console.log(value)
+    }
+    //1
+    //2
+    //3
+    //4
+</script>
+</body>
+</html>
