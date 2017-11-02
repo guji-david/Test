@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    for(var i=0;i<3;i++){
+        setTimeout(function () {
+            console.log('timeout'+i);
+        })
+    }
+    new Promise(function (resolve) {
+        console.log('promise1');
+        for(var i=0;i<1000;i++){
+           i=99&&resolve();
+        }
+        console.log('promise2')
+    }).then(function () {
+        console.log('then1');
+    })
+    console.log('global1');
+    function want() {
+        console.log('你想要的代码');
+    }
+    function fn(want) {
+        console.log('一大堆代码');
+        want&&want()
+    }
+    fn(want);
+
+  /*  try{
+        setTimeout(function () {
+            JSON.parse("{'a':'1'}")
+        },0)
+
+    }catch (ex){
+        console.log(ex);
+    }*/
+
+        function fnES6(num) {
+            return new Promise(function (resolve,reject) {
+                if(typeof num=='number'){
+                    resolve();
+                }else {
+                    reject();
+                }
+            }).then(function () {
+                console.log('参数是一个number值');
+            }).then(null,function () {
+                console.log('参数不是一个number值');
+            })
+        }
+    fnES6("hah"); fnES6(9)
+
+        function Promise(fn) {
+            var state='pending',
+             value=null,
+            callbacks=[];
+            this.then=function (onFulfilled) {
+                if(state==='pending'){
+                    callbacks.push(onFulfilled);
+                    return this;
+                }
+                onFulfilled(value);
+                return this;
+            };
+            function resolve(newValue) {
+                value=newValue;
+                state='fulfilled';
+                setTimeout(function () {
+                    callbacks.forEach(function (callback) {
+                        callback(newValue);
+                    })
+                },0)
+
+            }
+            fn(resolve);
+        }
+
+
+
+</script>
+</body>
+</html>
