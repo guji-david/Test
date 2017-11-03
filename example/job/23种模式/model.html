@@ -40,6 +40,36 @@
     var a = ObjectFactory( A, 'svenzeng' );
 
     alert ( a.name );  //svenzeng
+
+    /*-----------------------------------3. 对象修饰模式-----------------------------------------------*/
+
+    var amy={loc:1};
+    amy.loc++;
+    var ben={loc:9};
+    ben.loc++;
+    var move=function (car) {
+        car.loc++;
+    }
+//    一个像这样的函数,接受一个对象作为输入参数,并为这个对象增加某些属性或者功能,这个函数就可以被称为修饰器,或者修饰器函数.
+//    常用形容词命名 比如这里的carlike
+    var carlike=function (obj,loc) {
+        obj.loc=loc;
+        return obj;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </script>
 </body>
 </html>

@@ -60,7 +60,9 @@
 */
     /*结论：this的绑定，不与函数定义的位置有关，而是与调用者与调用方式有关*/
     //--------多层对象调用this的指向————————————-----
+  /*  var a="window";
     function fn(){
+        console.log("----"+this);
         console.log("----"+this.a);
     };
     var obj={
@@ -75,7 +77,23 @@
         a:3,
         fn:fn()
     };
-    obj.obj2.obj3.fn();
+    obj.obj2;*/
+  function log(val) {
+      console.log(val)
+  }
+  var obj={
+      fn:function (a,b) {
+          log(this)
+      }
+  }
+    obj.fn(3,4);
+    var fn=function (a,b) {
+        log(this,a,b)
+    }
+  var r={},g={},b={};r.method=fn;
+//    r.method=(g,b);
+    fn.call(r,g,b);
+    r.method.call(r,g,b);
 </script>
 <body>
 
