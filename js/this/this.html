@@ -81,20 +81,20 @@
   function log(val) {
       console.log(val)
   }
-  var obj={
-      fn:function (a,b) {
-          log(this)
-      }
-  }
+    var obj={
+        fn:function (a,b) {
+            log(this)
+        }
+    }
     obj.fn(3,4);
     var fn=function (a,b) {
         log(this,a,b)
     }
-  var r={},g={},b={};r.method=fn;
-//    r.method=(g,b);
+    var r={},g={},b={};r.method=fn;
+    //    r.method=(g,b);
     fn.call(r,g,b);
     r.method.call(r,g,b);
-//    今天
+//
 </script>
 <body>
 
