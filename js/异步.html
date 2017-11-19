@@ -28,7 +28,7 @@
         console.log('一大堆代码');
         want&&want()
     }
-    fn(want);
+//    fn(want);
 
   /*  try{
         setTimeout(function () {
@@ -96,7 +96,7 @@
 //     1. 如果promise内部的函数是同步函数,我们要加入一些处理,保证resolve执行之前,then方法已经注册完所有的回调;
 //     2.通过setTimeout机制,将resolve中执行回调的逻辑放置到JS任务队列末尾,以保证在resolve执行时,then方法的回调函数已经注册成功
 
-   (function test() {
+   /*(function test() {
        setTimeout(function() {console.log(4)}, 0);//1111.遇到setTimeout,交给其他模块执行,执行完后回调放入macro-task中
 //     77777.  micro-task执行完毕，开始执行macro-task中的回调函数，输出4。
        new Promise(function executor(resolve) {//2222.遇到Promise,立即执行里面的function，输出1。
@@ -110,7 +110,28 @@
        });
        console.log(3);//5555.继续执行，输出3
    })()//1 2 3 5 4
-//    8888 结束
+//    8888 结束*/
+
+
+    function test(x,y){
+        y=y||'world';
+        console.log("x--->"+x+"  y------>"+y)
+    }
+
+   test(0,0);
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
