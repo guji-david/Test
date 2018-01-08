@@ -54,17 +54,26 @@
 
     }*/
 //    3.使用new创建对象,使用回调函数
-    function Thing(name) {
+  /*  function Thing(name) {
         this.name=name;
     }
     Thing.prototype.doSomething=function (callback,salutation) {
         callback.call(this,salutation)
     }
     function foo(salutation) {
-        alert(salutation+" "+this.name);
+        console.log(salutation+" "+this.name);
     }
     var t=new Thing('Joe');
-    t.doSomething(foo,'Hi')
+    t.doSomething(foo,'Hi');*/
+
+    //    4.回调函数 调试
+    function test(a,callback) {
+        console.log(a);
+        callback();
+    }
+    test("aaaaaaaaaa",function(){
+        console.log("bbbbbbbbbbbbbb");
+    })
 </script>
 </body>
 </html>

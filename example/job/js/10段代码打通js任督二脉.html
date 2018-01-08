@@ -126,6 +126,22 @@
     }
     var a9 = 2;
     bar9();
+
+    Array.prototype.unique3 = function(ar){
+        var ret = [];
+        ar.forEach(function(e, i, ar) {
+            if (ar.indexOf(e) === i) {
+                ret.push(e);
+            }
+        });
+        return ret;
+    }
+
+    var arr = [{name:1},{name1:2},{name:1}];
+    alert(JSON.stringify(arr.unique3()));
+
+
+
 </script>
 
 
