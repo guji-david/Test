@@ -19,12 +19,13 @@ image.onload=function(e){
     $("#blur-div").css("width",canvasWidth+"px");
     $("#blur-div").css("height",canvasHeight+"px");
 
-    $("#blur-image").css("width",image.Width+"px");
+    $("#blur-image").css("width",image.width+"px");
     $("#blur-image").css("height",image.height+"px");
-       leftMargin=(image.Width-canvasWidth)/2;
+       leftMargin=(image.width-canvasWidth)/2;
         topMargin=(image.height-canvasHeight)/2;
     $("#blur-image").css("top",topMargin+"px");
     $("#blur-image").css("left",leftMargin+"px");
+    initcanvas();
     initcanvas();
 };
 function initcanvas(){
@@ -32,7 +33,7 @@ function initcanvas(){
                      y:Math.random()*(canvas.height-radius),
                      r:radius};
     draw(image,clippingRegion);
-}
+};
 function setCliplingRegion(clippingRegion){
     context.beginPath();
     context.arc(clippingRegion.x,clippingRegion.y,clippingRegion.r,0,Math.PI*2,false);

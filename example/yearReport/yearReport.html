@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>手势+鼠标</title>
+    <link rel="stylesheet" href="./yearReport.css">
+
+</head>
+
+<body>
+<div class="main">
+    <div class="page page1"></div>
+    <div class="page page2"></div>
+    <div class="page page3"></div>
+</div>
+
+
+<script src="./js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.swipe.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $('.page1').swipe({
+       /* left: function(){
+            $(this).text('向左运动');
+        },*/
+        right: function(){
+            $(this).text('向右运动');
+        },
+        up: function(){
+            console.log($(this));
+            $(this).hide();
+        },
+        down: function(){
+            $(this).text('向下运动');
+        }
+    });
+</script>
+</body>
+
+</html>
