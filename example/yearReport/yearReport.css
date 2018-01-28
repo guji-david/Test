@@ -6,10 +6,9 @@ html,body {
     height: 100%;
     width: 100%;
 }
-.main{
 
-}
 .page{
+    display: none;
     height: 100vh;
 }
 
@@ -24,5 +23,11 @@ html,body {
 }
 .page3{
     background: url(./img/3-1.png) no-repeat center center ;
+    background-size: cover;
+}
+
+
+.page4{
+    background: url(./img/3-2.png) no-repeat center center ;
     background-size: cover;
 }

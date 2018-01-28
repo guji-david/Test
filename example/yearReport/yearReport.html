@@ -12,28 +12,85 @@
 <div class="main">
     <div class="page page1"></div>
     <div class="page page2"></div>
-    <div class="page page3"></div>
+    <div class="page page3">
+        <ul class="page3Ul">
+            <li class="page3Li"></li>
+            <li class="page3Li"></li>
+            <li class="page3Li"></li>
+        </ul>
+    </div>
+    <div class="page page4"></div>
 </div>
 
 
 <script src="./js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
 <script src="jquery.swipe.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-    $('.page1').swipe({
-       /* left: function(){
-            $(this).text('向左运动');
-        },*/
-        right: function(){
-            $(this).text('向右运动');
-        },
-        up: function(){
-            console.log($(this));
-            $(this).hide();
-        },
-        down: function(){
-            $(this).text('向下运动');
+    //初始化信息
+    function init() {
+        // 初始化内容
+        var pageList,page1,page3;
+         pageList = $(".page");
+         page1=$(".page1");
+         page3=$(".page3");
+        for(var i=0,len=pageList.length;i<len;i++){
+            $(pageList[i]).addClass("page"+(i+1));
+            $('.page'+[i]).swipe({
+                up: function(){
+                    if($(this).next().length){
+                       if(page1[0]==$(this)[0]){
+                           if(sessionStorage.getItem("useId")){
+                               $(this).hide();
+                               $(this).next().show();
+                               //获取信息
+                               getInfo();
+                           }else{
+                               $(window).attr('location','./login.html');
+                           }
+                       }else{
+                           $(this).hide();
+                           $(this).next().show()
+                       }
+
+                    }
+
+                },
+                down: function(){
+                    if($(this).prev().length){
+                        $(this).hide();
+                        $(this).prev().show()
+                    }
+                }
+            });
         }
-    });
+    };
+    //初始化
+    //获取信息
+    function getInfo() {
+        var infoData,page2;
+        page2=$(".page2");
+        if( sessionStorage.getItem("data")){
+            infoData=sessionStorage.getItem("data");
+            handleData(infoData);
+        }else {
+            $.getJSON("./data.json",function(data){
+                infoData=sessionStorage.setItem("data",data);
+                handleData(infoData)
+            })
+        }
+
+    }
+    //处理数据
+    function handleData(data) {
+
+    }
+    //增加左右滑动事件
+    function addSwipeFn() {
+        var page3Ul=$(".page3Ul");
+    }
+    init();
+
+
 </script>
 </body>
 
