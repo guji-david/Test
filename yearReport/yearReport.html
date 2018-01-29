@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>手势+鼠标</title>
-    <link rel="stylesheet" href="./yearReport.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="./yearReport.css">
 </head>
 
 <body>
@@ -45,7 +45,6 @@
         },
     })
     var mySwiper2 = new Swiper('.swiper-container2', {
-//        direction :'vertical'
     })
     function getInfo() {
         var infoData;
@@ -69,7 +68,10 @@
 
         var tender=data.tender;
         var earn=data.earn;
-        handleDataPage3(data.tender,data.earn);
+        if(tender||earn){
+            handleDataPage3(data.tender,data.earn);
+        }
+
             var page3Ul=$(".page3Ul");
 
     }
@@ -82,9 +84,6 @@
         var seasonList=[];
         var seasonListNum=[];
         var reg = /Q/;
-        console.log(tender);
-        console.log(earn);
-
         //存储 tender的key并排序
         for (var item in tender) {
             if(reg.test(item)){
@@ -94,10 +93,8 @@
             }
 
         }
-        console.log("seasonList------------------>"+seasonList);
-        //存储 tender的value并排序
+        //存储 tender的value
         for(i in  seasonList){
-            console.log("seasonList[i]------------------>"+seasonList[i]);
             for (var item in tender,earn) {
                 if(reg.test(item)){
                     if(seasonList[i]==item){
@@ -116,108 +113,6 @@
         console.log(seasonListNum);
     }
 </script>
-<!--<script type="text/javascript">
-    //初始化信息
-    function init() {
-        // 初始化内容
-        var pageList,page1,page3;
-         pageList = $(".page");
-         page1=$(".page1");
-         page3=$(".page3");
-        for(var i=0,len=pageList.length;i<len;i++){
-            $(pageList[i]).addClass("page"+(i+1));
-            $('.page'+[i]).swipe({
-                up: function(){
-                    console.log("upupup");
-                    console.log($(this));
-                    console.log($(this).next());
-
-                    if($(this).next().length){
-                       if(page1[0]==$(this)[0]){
-                           if(sessionStorage.getItem("useId")){
-                               $(this).hide();
-                               $(this).next().show();
-                               //获取信息
-                               getInfo();
-                           }else{
-                               $(window).attr('location','./login.html');
-                           }
-                       }else{
-                           $(this).hide();
-                           $(this).next().show()
-                       }
-
-                    }
-
-                },
-                down: function(){
-                    console.log("downdowndown");
-                    console.log($(this));
-                    console.log($(this).prev());
-                    if($(this).prev().length){
-                        $(this).hide();
-                        $(this).prev().show()
-                    }
-                }
-            });
-        }
-    };
-    //初始化
-    //获取信息
-    function getInfo() {
-        var infoData,page2;
-        page2=$(".page2");
-        if( sessionStorage.getItem("data")){
-            infoData=sessionStorage.getItem("data");
-            handleData(infoData);
-        }else {
-            $.getJSON("./data.json",function(data){
-                infoData=sessionStorage.setItem("data",data);
-                handleData(infoData)
-            })
-        }
-
-    }
-    //处理数据
-    function handleData(data) {
-        addSwipeFn();
-       /* if(data.tender){
-            addSwipeFn();
-        }*/
-
-    }
-    //增加左右滑动事件
-    function addSwipeFn() {
-        var page3LiList=$(".page3Li");
-        for(var i=0,len=page3LiList.length;i<len;i++){
-            $(page3LiList[i]).addClass("page3Li"+(i+1));
-            $('.page3Li'+[i]).swipe({
-                left: function(){
-                    console.log($(this).next());
-                    console.log("left");
-                    console.log($(this));
-                    if($(this).next().length){
-                        $(this).hide();
-                        $(this).next().show()
-
-                    }
-
-                },
-                right: function(){
-                    console.log("right");
-                    console.log();
-                    if($(this).prev().length){
-                        $(this).hide();
-                        $(this).prev().show()
-                    }
-                }
-            });
-        }
-    }
-    init();
-
-
-</script>-->
 </body>
 
 </html>
