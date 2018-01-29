@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>手势+鼠标</title>
+    <link rel="stylesheet" href="./yearReport.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+
+<body>
+
+<div class="main" style="">
+    <div class="swiper-container swiper-container1" style="height: 100%">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page page1"></div>
+            <div class="swiper-slide page page2"></div>
+            <div class="swiper-slide page page3 swiper-container2">
+                <ul class="page3Ul swiper-wrapper">
+                    <li class="page3Li swiper-slide"></li>
+                    <li class="page3Li swiper-slide"></li>
+                    <li class="page3Li swiper-slide"></li>
+                    <li class="page3Li swiper-slide"></li>
+                </ul>
+            </div>
+            <div class="swiper-slide page page4"></div>
+            <div class="swiper-slide page page5"></div>
+        </div>
+    </div>
+</div>
+<script src="./js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container1', {
+        direction :'vertical',
+        on: {
+            touchStart: function(event){
+                        if(!this.activeIndex && !sessionStorage.getItem("useId")){
+                                $(window).attr('location','./login.html');
+                        }else{
+                            getInfo();
+                        }
+//                console.log('事件触发了;',this.activeIndex);
+            },
+        },
+    })
+    var mySwiper2 = new Swiper('.swiper-container2', {
+//        direction :'vertical'
+    })
+    function getInfo() {
+        var infoData;
+        if( sessionStorage.getItem("data")){
+            infoData=sessionStorage.getItem("data");
+            handleData(JSON.parse(infoData));
+        }else {
+            $.getJSON("./data.json",function(data){
+                infoData=sessionStorage.setItem("data",JSON.stringify(data));
+                console.log(infoData);
+                console.log(JSON.parse(infoData));
+                handleData(JSON.parse(infoData))
+            })
+        }
+
+    };
+    function handleData(data) {
+//        处理第二页
+         handleDataPage2(data);
+//        处理第三页数据数据
+
+        var tender=data.tender;
+        var earn=data.earn;
+        handleDataPage3(data.tender,data.earn);
+            var page3Ul=$(".page3Ul");
+
+    }
+    //        处理第三页数据数据
+    function handleDataPage2(data){
+
+    };
+    //        处理第三页数据数据
+    function handleDataPage3(tender,earn) {
+        var seasonList=[];
+        var seasonListNum=[];
+        var reg = /Q/;
+        console.log(tender);
+        console.log(earn);
+
+        //存储 tender的key并排序
+        for (var item in tender) {
+            if(reg.test(item)){
+                console.log(item+":"+tender[item]);
+                seasonList.push(item);
+                seasonList.sort();
+            }
+
+        }
+        console.log("seasonList------------------>"+seasonList);
+        //存储 tender的value并排序
+        for(i in  seasonList){
+            console.log("seasonList[i]------------------>"+seasonList[i]);
+            for (var item in tender,earn) {
+                if(reg.test(item)){
+                    if(seasonList[i]==item){
+                        seasonListNum.push({
+                            year:seasonList[i].substring(0,3),
+                            season:seasonList[i].substring(4),
+                            tenderValue:tender[item],
+                            earnValue:earn[item]})
+                    }
+                }
+
+            }
+
+        }
+
+        console.log(seasonListNum);
+    }
+</script>
+<!--<script type="text/javascript">
+    //初始化信息
+    function init() {
+        // 初始化内容
+        var pageList,page1,page3;
+         pageList = $(".page");
+         page1=$(".page1");
+         page3=$(".page3");
+        for(var i=0,len=pageList.length;i<len;i++){
+            $(pageList[i]).addClass("page"+(i+1));
+            $('.page'+[i]).swipe({
+                up: function(){
+                    console.log("upupup");
+                    console.log($(this));
+                    console.log($(this).next());
+
+                    if($(this).next().length){
+                       if(page1[0]==$(this)[0]){
+                           if(sessionStorage.getItem("useId")){
+                               $(this).hide();
+                               $(this).next().show();
+                               //获取信息
+                               getInfo();
+                           }else{
+                               $(window).attr('location','./login.html');
+                           }
+                       }else{
+                           $(this).hide();
+                           $(this).next().show()
+                       }
+
+                    }
+
+                },
+                down: function(){
+                    console.log("downdowndown");
+                    console.log($(this));
+                    console.log($(this).prev());
+                    if($(this).prev().length){
+                        $(this).hide();
+                        $(this).prev().show()
+                    }
+                }
+            });
+        }
+    };
+    //初始化
+    //获取信息
+    function getInfo() {
+        var infoData,page2;
+        page2=$(".page2");
+        if( sessionStorage.getItem("data")){
+            infoData=sessionStorage.getItem("data");
+            handleData(infoData);
+        }else {
+            $.getJSON("./data.json",function(data){
+                infoData=sessionStorage.setItem("data",data);
+                handleData(infoData)
+            })
+        }
+
+    }
+    //处理数据
+    function handleData(data) {
+        addSwipeFn();
+       /* if(data.tender){
+            addSwipeFn();
+        }*/
+
+    }
+    //增加左右滑动事件
+    function addSwipeFn() {
+        var page3LiList=$(".page3Li");
+        for(var i=0,len=page3LiList.length;i<len;i++){
+            $(page3LiList[i]).addClass("page3Li"+(i+1));
+            $('.page3Li'+[i]).swipe({
+                left: function(){
+                    console.log($(this).next());
+                    console.log("left");
+                    console.log($(this));
+                    if($(this).next().length){
+                        $(this).hide();
+                        $(this).next().show()
+
+                    }
+
+                },
+                right: function(){
+                    console.log("right");
+                    console.log();
+                    if($(this).prev().length){
+                        $(this).hide();
+                        $(this).prev().show()
+                    }
+                }
+            });
+        }
+    }
+    init();
+
+
+</script>-->
+</body>
+
+</html>
