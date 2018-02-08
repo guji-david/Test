@@ -4,30 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>手势+鼠标</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+
     <link rel="stylesheet" href="./yearReport.css">
 </head>
 
 <body>
 
-<div class="main" style="">
+<div class="main" >
     <div class="swiper-container swiper-container1" style="height: 100%">
         <div class="swiper-wrapper">
-            <div class="swiper-slide page page1"></div>
-            <div class="swiper-slide page page2"></div>
-            <div class="swiper-slide page page3 swiper-container2">
-                <ul class="page3Ul swiper-wrapper">
-                    <li class="page3Li swiper-slide"></li>
-                    <li class="page3Li swiper-slide"></li>
-                    <li class="page3Li swiper-slide"></li>
-                    <li class="page3Li swiper-slide"></li>
+            <div class="swiper-slide grand_record grand_one"></div>
+            <div class="swiper-slide grand_record grand_two"></div>
+            <div class="swiper-slide grand_record grand_three swiper-container2">
+                <ul class="grand_three_UI swiper-wrapper">
+
                 </ul>
             </div>
-            <div class="swiper-slide page page4"></div>
-            <div class="swiper-slide page page5"></div>
+            <div class="swiper-slide grand_record grand_four"></div>
+            <div class="swiper-slide grand_record grand_five"></div>
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
 <script src="./js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
 <script>
@@ -37,14 +35,12 @@
             touchStart: function(event){
                         if(!this.activeIndex && !sessionStorage.getItem("useId")){
                                 $(window).attr('location','./login.html');
-                        }else{
+                        }else if(!this.activeIndex){
                             getInfo();
                         }
 //                console.log('事件触发了;',this.activeIndex);
             },
         },
-    })
-    var mySwiper2 = new Swiper('.swiper-container2', {
     })
     function getInfo() {
         var infoData;
@@ -53,10 +49,9 @@
             handleData(JSON.parse(infoData));
         }else {
             $.getJSON("./data.json",function(data){
+//            $.getJSON("http://test-jintoushou.oss-cn-beijing.aliyuncs.com/act/report/0a70773dba25aaafac11e24eecf54e26.json",function(data){
                 infoData=sessionStorage.setItem("data",JSON.stringify(data));
-                console.log(infoData);
-                console.log(JSON.parse(infoData));
-                handleData(JSON.parse(infoData))
+                handleData(JSON.parse(data))
             })
         }
 
@@ -72,7 +67,7 @@
             handleDataPage3(data.tender,data.earn);
         }
 
-            var page3Ul=$(".page3Ul");
+
 
     }
     //        处理第三页数据数据
@@ -82,12 +77,13 @@
     //        处理第三页数据数据
     function handleDataPage3(tender,earn) {
         var seasonList=[];
-        var seasonListNum=[];
+        var seasonObjList=[];
         var reg = /Q/;
+        var page3Ul=$(".grand_three_UI");
         //存储 tender的key并排序
         for (var item in tender) {
             if(reg.test(item)){
-                console.log(item+":"+tender[item]);
+//                console.log(item+":"+tender[item]);
                 seasonList.push(item);
                 seasonList.sort();
             }
@@ -98,19 +94,73 @@
             for (var item in tender,earn) {
                 if(reg.test(item)){
                     if(seasonList[i]==item){
-                        seasonListNum.push({
+                        console.log(seasonList[i].substring(4))
+                        seasonObjList.push({
                             year:seasonList[i].substring(0,4),
-                            season:seasonList[i].substring(4),
+                            season:QtoSeasonText(seasonList[i].substring(4),1),//seasonList[i].substring(4)值为Q 1为通过Q转换成season
+                            poem:QtoSeasonText(seasonList[i].substring(4),2),//seasonList[i].substring(4)值为Q  2为通过Q转换成poem
                             tenderValue:tender[item],
-                            earnValue:earn[item]})
+                            earnValue:earn[item],
+                            class:QtoSeasonText(seasonList[i].substring(4),3),//seasonList[i].substring(4)值为Q  3为通过Q转换成class
+                        })
                     }
                 }
 
             }
 
-        }
+        };
+        page3Ul.append( DataPage3ToHTML(seasonObjList));
+        DataPage3ToHTML(seasonObjList);
+        var mySwiper2 = new Swiper('.swiper-container2', {
+        })
+        console.log(seasonObjList);
+    }
+//    将处理完的数据赋值到html(字符串拼接)
+    function DataPage3ToHTML(list) {
+        var Page3StrHTML = "";
+        $.each(list, function (i, item) {
+            Page3StrHTML += "<li class='page3Li swiper-slide'>" + item.year+item.poem+item.tenderValue+item.earnValue+ "</li>";
+        });
+        return Page3StrHTML;
+    }
+//    根据数据转换对应的季节相应字段
+    function QtoSeasonText(Q,type) {//1.为季节season 2.为诗词描述poem 3.为class
+        switch(Q) {
+            case "Q1":
+              if(type==1){
+                  return "春";
+              }else if(type==2){
+                  return '"人间四月芳菲尽, 山寺桃花始盛开。"';
+              }else{
+                  return "spring";
+              }
+            case "Q2":
+              if(type==1){
+                  return "夏";
+              }else if(type==2){
+                  return '"清风明月无人管，并作南楼一味凉。"';
+              }else{
+                  return "summer";
+              }
+            case "Q3":
+              if(type==1){
+                  return "秋";
+              }else if(type==2){
+                  return '"自古逢秋悲寂寥，我言秋日胜春朝。"';
+              }else{
+                  return "autumn";
+              }
+            case "Q4":
+              if(type==1){
+                  return "冬";
+              }else if(type==2){
+                  return '"冰雪林中著此身,不同桃李混芳尘。"';
+              }else{
+                  return "winter";
+              }
 
-        console.log(seasonListNum);
+            default:
+        }
     }
 </script>
 </body>

@@ -10,53 +10,50 @@ html,body {
 .main{
     height: 100%
 }
-.page{
 
-}
 
-.page1{
+.grand_one{
     background: url(./img/1.png) no-repeat center center ;
     background-size: cover;
 }
-.page2{
+.grand_two{
     background: url(./img/2.png) no-repeat center center ;
     background-size: cover;
 }
-.page3{
-    background: yellow ;
+.grand_three{
+    /*background: yellow ;*/
     background-size: cover;
 }
-.page3 .page3Ul{
-    /*height: 100%;*/
-    /*width: 100%;*/
+.grand_three .grand_three_UI{
 }
-.page3 .page3Ul li{
+.grand_three .grand_three_UI li{
+    font-size: 4em;
     width: 100%;
     height: 100%;
 }
 
-.page3 .page3Ul li:nth-child(4n+1){
-    background: url(./img/3-1.png) no-repeat center center ;
+.grand_three .grand_three_UI li:nth-child(4n+1){
+    background: url(./img/spring.png) no-repeat center center ;
     background-size: cover;
 }
-.page3 .page3Ul li:nth-child(4n+2){
-    background: url(./img/3-2.png) no-repeat center center ;
+.grand_three .grand_three_UI li:nth-child(4n+2){
+    background: url(./img/summer.png) no-repeat center center ;
     background-size: cover;
 }
-.page3 .page3Ul li:nth-child(4n+3){
-    background: url(./img/3-3.png) no-repeat center center ;
+.grand_three .grand_three_UI li:nth-child(4n+3){
+    background: url(./img/autumn.png) no-repeat center center ;
     background-size: cover;
 }
-.page3 .page3Ul li:nth-child(4n){
-    background: url(img/3-0.png) no-repeat center center ;
+.grand_three .grand_three_UI li:nth-child(4n){
+    background: url(./img/winter.png) no-repeat center center ;
     background-size: cover;
 }
 
-.page4{
+.grand_four{
     background: url(img/4.png) no-repeat center center ;
     background-size: cover;
 }
-.page5{
+.grand_five{
     background: url(img/5.png) no-repeat center center ;
     background-size: cover;
 }
