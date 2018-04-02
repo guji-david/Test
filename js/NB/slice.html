@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array.prototype.slice.call()方法详解</title>
+</head>
+<body>
+<script type="text/javascript">
+    function test(a,b,c,d)
+    {
+        var arg = Array.prototype.slice.call(arguments,1);
+        console.log(typeof arguments);
+        console.log(arg);
+    }
+    test("a","b","c","d"); //b,c,d
+    var a={length:2,0:'first',1:'second'};//类数组,有length属性，长度为2，第0个是first，第1个是second
+    console.log(Array.prototype.slice.call(a,0));// ["first", "second"],调用数组的slice(0);
+    var a={0:'first',1:'second'};//去掉length属性，返回一个空数组
+    console.log(Array.prototype.slice.call(a,1));//[]
+    function test(){
+        console.log(Array.prototype.slice.call(arguments));//["a", "b", "c"]，slice(0)
+        console.log(Array.prototype.slice.call(arguments,1));//["b", "c"],slice(1)
+    }
+    test("a","b","c");
+
+    /**
+     *
+     * 补充：*/
+//    将函数的实际参数转换成数组的方法
+
+//    方法一：
+//    var args = Array.prototype.slice.call(arguments);
+
+//    方法二：
+//    var args = [].slice.call(arguments, 0);
+
+//    方法三：
+
+//    var args = [];
+//    for (var i = 1; i < arguments.length; i++) {
+//        args.push(arguments[i]);
+//    }
+    (function () {
+        var o = {
+            a : 7,
+            get b(){return this.a +1;},//通过 get,set的 b,c方法间接性修改 a 属性
+            set c(x){this.a = x/2}
+        };
+        console.log(o.a);
+        console.log(o.b);
+        o.c = 50;
+        console.log(o.a);
+    })();
+
+   /* (function () {
+        var o = {
+            a : 7,
+            get a(){return this.a +1;},//死循环
+            set a(x){this.a = x/2}
+        };
+        console.log(o.a);
+        console.log(o.b);
+        o.c = 50;
+        console.log(o.a);
+    })();*/
+    (function () {
+        var b = "bb";
+        var c = "cc";
+        var o = {
+            a : 7,
+            get [b](){return this.a +1;},
+            set [c](x){this.a = x/2},
+        };
+        console.log(o.a);
+        console.log(o[b]);
+        o["cc"] = 50;
+        console.log(o.a);
+    })();
+</script>
+</body>
+</html>

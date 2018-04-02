@@ -13,7 +13,35 @@
     <div class="search">
         <ul id="ul"></ul>
     </div>
+
 </div>
 <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    function B(name) {
+        this.name = name
+        this.getName = function() {
+            console.log(this.name)
+        }
+
+        var c = 'test'
+        console.log(c)
+    }
+
+    var b = new B('testb')      // test
+    console.log(b)              // B: { name: 'testb',getName: function() {} }
+    B('testc')                  // test
+
+    var Person = function(){}
+    Person.prototype.sayName = function() {
+        alert('my name is xxx')
+    }
+
+    Person.prototype.age = 12
+
+    var p = new Person()
+
+    p.sayName()
+
+</script>
 </body>
 </html>

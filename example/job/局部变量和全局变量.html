@@ -60,7 +60,7 @@
  main();
 var m=main();*/
     /*---------------------第一种情况------------*/
-    window.param=1;
+/*    window.param=1;
     window.main=function(){
         console.log(param);
         var param=2;
@@ -69,7 +69,33 @@ var m=main();*/
     }
     main();
     window.main();
-    var m=new main();
+    var m=new main();*/
+ let x=1, y=2;
+ function foo(x) {
+     let y=x;
+     let obj={
+         x:x++,
+         y:--y,//
+         setXY:function (a,y) {//1 2
+             y=x+a;//x=4 y=5
+             console.log('setXY:',x,this.x,y,this.y)//4 3 5 2
+         },
+         getXY:function () {
+             console.log('getXY:',x,this.x,y,this.y)
+             return x;
+         },
+
+     }
+     return obj
+ }
+
+ let f=foo(3);//{x:3 y:2 setXY:getXY:}
+ f.setXY(x,y);//4 3 5 2
+ f.getXY();//4 3 2 2
+ console.log('ouer:'+x,f.x,y,f.y)//1 3 2 2
+
+
+
 </script>
 </body>
 </html>

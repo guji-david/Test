@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Uncaught RangeError: Maximum call stack size exceeded--------内存溢出-->
+<!--<script src="src/Observer.js"></script>-->
+<script src="src/Observer2.js"></script>
+<div id="msg">
+   <!-- <p>{{message}}</p>
+
+    <p><input type="text" v-model="message"/></p>
+    <p>{{message}}</p>
+    <p><button type="button" v-on:click="clickBtn">click me</button></p>-->
+</div>
+<script>
+    var a = {
+        b:{c:1},
+        d:2,
+        c:3
+    };
+    observer(a);
+    a.d = {e:5};
+//    console.log(a.d)
+
+    var pattern = {
+        get: function () {
+            return 'I alway return this string,whatever you have assigned';
+        },
+        set: function () {
+            this.myname = 'this is my name string';
+        }
+    };
+
+
+    function TestDefineSetAndGet() {
+        Object.defineProperty(this, 'myproperty', pattern);
+    }
+
+
+    var instance = new TestDefineSetAndGet();
+    instance.myproperty = 'test';
+
+    // 'I alway return this string,whatever you have assigned'
+    console.log(instance.myproperty);
+    // 'this is my name string'
+    console.log(instance.myname);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
