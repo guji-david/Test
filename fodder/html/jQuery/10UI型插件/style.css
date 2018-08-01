@@ -1,0 +1,105 @@
+#divtest
+{
+    width: 282px;
+    border: solid 1px #ccc;
+    margin: 0 auto;
+}
+#divtest .content
+{
+    background-color: #eee;
+    padding: 8px;
+    height: 23px;
+    line-height: 23px;
+}
+p {
+    padding: 0;
+    margin: 0;
+    line-height: 23px;
+}
+#divtest .title
+{
+    padding: 8px;
+    background-color:Blue;
+    color:#fff;
+    height: 23px;
+    line-height: 23px;
+    font-size: 15px;
+    font-weight: bold;
+}
+ul
+{
+    float: left;
+    width: 280px;
+    padding: 5px 0px;
+    margin: 0px;
+    font-size: 14px;
+    list-style-type: none;
+}
+ul li
+{
+    float: left;
+    width: 264px;
+    height: 32px;
+    line-height: 32px;
+    padding: 3px 8px;
+    border:solid 1px #ccc;
+    background-color:#eee;
+    cursor:move;
+    margin:2px 0px;
+}
+.box
+{
+    width: 280px;
+    border: solid 1px #eee;
+    margin: 10px 0px;
+}
+.box .title
+{
+    padding: 8px;
+    background-color: Blue;
+    color: #fff;
+    height: 23px;
+    line-height: 23px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.box .drag
+{
+    padding: 5px;
+    cursor: move;
+}
+.box .drag div
+{
+    border: solid 1px #fff;
+    background-color: red;
+    color:#fff;
+    cursor: move;
+    width: 35px;
+    padding: 20px;
+    text-align: center;
+}
+.box .cart
+{
+    padding: 5px;
+    cursor: move;
+}
+.box .cart div
+{
+    padding: 5px;
+    height: 55px;
+    text-align:center;
+}
+.focus
+{
+    background-color: #eee;
+}
+.drag ,.drag1
+{
+    border: solid 1px #fff;
+    background-color: Blue;
+    color:#fff;
+    cursor: move;
+    width: 35px;
+    padding: 20px;
+    text-align: center;
+}

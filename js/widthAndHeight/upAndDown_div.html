@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动轴滚动到头部或者底部 div</title>
+    <style type="text/css">
+
+        #scrolldiv{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto 100px auto;
+            background-color: #f00;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="scrolldiv">
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+</div>
+<script type="text/javascript">
+    var scrolldiv=document.getElementById("scrolldiv");
+    function divCroll() {
+        var scrollTop=scrolldiv.scrollTop;
+        var wholeHeight=scrolldiv.scrollHeight;
+        var divHeight=scrolldiv.clientHeight;
+//        var divHeight=scrolldiv.style.height;
+        console.log("divHeight----"+divHeight);
+        if(divHeight+scrollTop>=wholeHeight){
+            alert("我滚到了div底部")
+        }
+        if(scrollTop==0){
+            alert("我滚到了div顶部")
+        }
+    }
+    scrolldiv.onscroll=divCroll;
+</script>
+</body>
+</html>

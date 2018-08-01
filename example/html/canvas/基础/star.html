@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>五角星</title>
+</head>
+<body >
+<canvas id="canvas" style="display: block;margin: 0 auto;border: 1px solid #aaa">
+    您的浏览器不支持canvas
+</canvas>
+<script>
+    window.onload=function(){
+        var canvas=document.getElementById("canvas");
+        var context=canvas.getContext("2d");
+        canvas.width=800;
+        canvas.height=800;
+
+        context.fillStyle="#058";
+        context.font="bold 120px Arial";
+
+        context.textAlign="center";
+        context.textBaseline="middle";
+
+        context.shadowColor="gray";
+        context.shadowOffsetX=10;
+        context.shadowOffsetY=10;
+        context.shadowBlur=5;
+
+        context.lineWidth=10;
+        context.lineJoin="round";//round,bevel
+//        context.miterLimit=5;
+        drawStar(context,100,300,400,400,30)
+    };
+    function drawStar(cxt,r,R,x,y,rot){
+        cxt.beginPath();
+        for(var i=0;i<5;i++){
+            cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+                    -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+            cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+                    -Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+        }
+        cxt.closePath();
+        cxt.stroke();
+    }
+    function starPath(cxt){
+
+    }
+</script>
+</body>
+</html>

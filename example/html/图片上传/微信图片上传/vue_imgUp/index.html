@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信图片上传
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+	<script src="js/jquery-2.1.4.js"></script>
+	<script src="js/jweixin-1.0.0.js"></script>
+
+	<script src="js/app.js"></script>
+
+	<!--Growing统计-->
+	<script type='text/javascript'>
+		var _vds = _vds || [];
+		window._vds = _vds;
+		(function () {
+			_vds.push(['setAccountId', '8b5a13b185c25a20']);
+			_vds.push(['setCS1', 'user_id', getUserId()]);
+			(function () {
+				var vds = document.createElement('script');
+				vds.type = 'text/javascript';
+				vds.async = true;
+				vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(vds, s);
+			})();
+		})();
+	</script>
+</head>
+<body >
+<div id="imgUp">
+	<!--上传名片-->
+	<div >
+		<img id="regImg" width="130px" src="img/calling.png" alt="" @click="onSelectImg()">
+		<p>请上传您的工作名片照片，便于核对您的领取资格</p>
+	</div>
+</div>
+
+<script src="js/vue.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

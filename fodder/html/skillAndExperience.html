@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>技巧和经验</title>
+    <style type="text/css">
+       div{
+           border: solid 1px #ccc;
+           margin-bottom: 5px;
+       }
+        pre{
+            display: inline-block;
+        }
+       #test1{font-size:0;line-height:0;}
+       input{vertical-align:middle;}
+       #test2-1{height:45px;line-height:45px;}
+       #test2-2{height:200px;line-height:200px;width:200px;background-color:red }
+       #test2-2 .content{display:inline-block;vertical-align: middle;line-height: 15px;font-size: 14px }
+       a:link{color:#03c;}a:visited{color:#666;}a:hover{color:#f30;}a:active{color:#c30;}
+       html{scrollbar-3dlight-color:#999;
+           scrollbar-darkshadow-color:#999;
+           scrollbar-highlight-color:#fff;
+           scrollbar-shadow-color:#eee;
+           scrollbar-arrow-color:#000;
+           scrollbar-face-color:#ddd;
+           scrollbar-track-color:#eee;
+           scrollbar-base-color:#ddd;}
+       #test3{width:150px; white-space:nowrap;}
+       #test4{width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+       #test5{width:150px;word-wrap:break-word;}
+       #test6{clear:both;}
+       #test7{display:block;zoom:1;overflow:hidden;}
+       #test8{zoom:1;}
+       #test8:after{display:block;clear:both;visibility:hidden;height:0;content:'';}
+       #test9{cursor:pointer;}
+       #test10{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;}
+       #test11{display:table-cell;width:200px;height:200px;text-align:center;vertical-align:middle;}
+       #test11 p{margin:0;}
+       #test11 p img{vertical-align:middle;}
+       #test12{display:block;width:300px;height:100px;}
+       .a{color:#f00;}
+       .b{background:#eee;}
+       .c{background:#ccc;}
+       .outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;}
+       .inner{width:200px;height:200px;margin-top:-200px;}
+       .outer2{width:200px;height:200px;background:rgba(0,0,0,.2);background:#000\9;filter:alpha(opacity=20)\9;}
+       .outer2 .inner2{position:relative\9;}
+       #test13{width:400px;height:80px;text-indent:-9999px;background:#eee url(Header_Logo_1.png) no-repeat;}
+       #test14{width:400px;height:80px;background:#eee url(Header_Logo_1.png) no-repeat;}
+       #test14 span{visibility:hidden;/* 或者display:none */}
+       #test15{width:400px;height:0px;padding-top:70px;background:#eee url(Header_Logo_1.png) no-repeat;}
+       #test16{width:400px;height:80px;line-height:12;background:#eee url(Header_Logo_1.png) no-repeat;}
+       #test17{width:400px;height:80px;font-size:0;line-height:0;color:rgba(0,0,0,0);background:#eee url(Header_Logo_1.png) no-repeat;}
+       .box1{margin:10px 0;}
+       .box2{margin:20px 0;}
+    </style>
+</head>
+
+<body>
+<div>
+    <div>
+        <h4>1.如何清除图片下方出现几像素的空白间隙？</h4>
+        <span>第一种</span> <pre>img{display:block;}</pre>
+        <span>第二种</span> <pre>img{vertical-align:top;}</pre>
+        <span>第三种</span> <pre>#test{font-size:0;line-height:0;}#test为img的父元素}</pre>
+        <div id="test1"><img src="Header_Logo_1.png" alt=""/></div>
+    </div>
+    <div>
+        <h4>2.如何让文本垂直对齐文本输入框？</h4>
+        <span>第一种</span> <pre>input{vertical-align:middle;}</pre>
+        <div>
+            &nbsp;&nbsp; 如何让文本垂直对齐文本输入框 <br/><br/>
+            <input type="text"/><br/><br/>
+            &nbsp;&nbsp;如何让文本垂直对齐文本输入框
+        </div>
+    </div>
+    <div>
+        <h4>3-1.如何让单行文本在容器内垂直居中？？</h4>
+        <span>第一种</span> <pre>#test2{height:45px;line-height:45px;}</pre>
+        <div id="test2-1">
+            &nbsp;&nbsp; 如何让单行文本在容器内垂直居中
+            &nbsp;&nbsp;如何让单行文本在容器内垂直居中
+        </div>
+        <h>3-2.如何让多行文本在容器内垂直居中？？</h>
+        <span>第一种</span> <pre>#test2{height:45px;line-height:45px;}</pre>
+        <div id="test2-2">
+            <span class="content">
+                &nbsp;&nbsp; 如何让多行文本在容器内垂直居中 <br/>
+            &nbsp;&nbsp;如何让多行文本在容器内垂直居中
+            </span>
+
+        </div>
+    </div>
+    <div>
+        <h4>4.如何让超链接访问后和访问前的颜色不同且访问后仍保留hover和active效果？？？</h4>
+        <span>第一种</span> <pre>a:link{color:#03c;}a:visited{color:#666;}a:hover{color:#f30;}a:active{color:#c30;}</pre>
+        <div >
+            <a href="#">如何让超链接访问后和访问前的颜色不同且访问后仍保留hover和active效果</a>
+        </div>
+    </div>
+    <div>
+        <h4>5.为什么Standard mode下IE无法设置滚动条的颜色？？？</h4>
+        <span>第一种</span> <pre>
+     html{scrollbar-3dlight-color:#999;
+	scrollbar-darkshadow-color:#999;
+	scrollbar-highlight-color:#fff;
+	scrollbar-shadow-color:#eee;
+	scrollbar-arrow-color:#000;
+	scrollbar-face-color:#ddd;
+	scrollbar-track-color:#eee;
+	scrollbar-base-color:#ddd;}
+}</pre>
+        <div >
+            html
+        </div>
+    </div>
+    <div>
+        <h4>6.如何使文本溢出边界不换行强制在一行内显示？？？</h4>
+        <span>第一种</span> <pre>#test3{width:150px;white-space:nowrap;}</pre>
+        <div id="test3">
+            htmlhtmlhtmlhtmlhtmlhtmlhtmlhtmlhtml
+        </div>
+    </div>
+    <div>
+        <h4>7.如何使文本溢出边界不换行强制在一行内显示？？？</h4>
+        <span>第一种</span> <pre>#test4{width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}</pre>
+        <div id="test4">
+            htmlhtmlhtmlhtmlhtmlhtmlhtmlhtmlhtml
+        </div>
+    </div>
+    <div>
+        <h4>8.如何使连续的长字符串自动换行？？？？</h4>
+        <span>第一种</span> <pre>#test5{width:150px;word-wrap:break-word;}</pre>
+        <div id="test5">
+            htmlhtmlhtmlhtmlhtmlhtmlhtmlhtmlhtml
+        </div>
+    </div>
+    <div id="test7">
+        <h4>9.如何清除浮动？？？？</h4>
+        <span>第一种</span> <pre>#test6{clear:both;}#test6为浮动元素的下一个兄弟元素</pre><br/>
+        <span>第二种</span> <pre>#test7{display:block;zoom:1;overflow:hidden;}#test7为浮动元素的父元素。zoom:1也可以替换为固定的width或height</pre><br/>
+        <span>第三种</span> <pre>#test8{display:block;zoom:1;overflow:hidden;}#test8为浮动元素的父元素。</pre><br/>
+        <div style="float: left">float</div>
+        <div id="test6">
+            htmlhtmlhtmlhtmlhtmlhtmlhtmlhtmlhtml
+        </div>
+    </div>
+    <div >
+        <h4>10.如何定义鼠标指针的光标形状为手型并兼容所有浏览器？</h4>
+        <span>第一种</span> <pre>#test9{cursor:pointer;}</pre><br/>
+        <div >
+            若将cursor设置为hand，将只有IE和Opera支持，且hand为非标准属性值
+        </div>
+    </div>
+    <div >
+        <h4>11.如何让已知高度的容器在页面中水平垂直居中？？</h4>
+        <span>第一种</span> <pre>#test10{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;}</pre><br/>
+        <div style="position: relative;height: 400px">
+            <div id="test10">
+                Know More：已知高度的容器如何在页面中水平垂直居中
+            </div>
+        </div>
+
+    </div>
+    <div >
+        <h4>12.如何让未知尺寸的图片在已知宽高的容器内水平垂直居中？？</h4>
+        <span>第一种</span> <pre>
+    #test11{display:table-cell;*display:block;*position:relative;width:200px;height:200px;text-align:center;vertical-align:middle;}
+#test11 p{*position:absolute;*top:50%;*left:50%;margin:0;}
+#test11 p img{*position:relative;*top:-50%;*left:-50%;vertical-align:middle;}
+</pre><br/>
+        <div id="test11">
+            <p><img src="Header_Logo_1.png" alt=""/></p>
+        </div>
+        #test10是img的祖父节点，p是img的父节点。Know More：未知尺寸的图片如何水平垂直居中
+    </div>
+    <div >
+        <h4>13.如何设置span的宽度和高度（即如何设置内联元素的宽高）？？</h4>
+        <span>第一种</span> <pre>span{display:block;width:200px;height:100px;}</pre><br/>
+    <span id="test12">
+          要使内联元素可以设置宽高，只需将其定义为块级或者内联块级元素即可。
+        所以方法非常多样，既可以设置display属性，也可以设置float属性，或者position属性等等。
+    </span>
+    </div>
+    <div >
+        <h4>14.如何给一个元素定义多个不同的css规则？？</h4>
+        <span>第一种</span> <pre>.a{color:#f00;}.b{background:#eee;}.c{background:#ccc;}}</pre><br/>
+        <div>多个规则之间使用空格分开，并且只有class能同时使用多个规则，id不可以</div>
+        <div class="a b">测试1</div>
+        <div class="a c">测试2</div>
+        <h4>15.如何让某个元素充满整个页面？？？</h4>
+        <span>第一种</span> <pre>html,body{height:100%;margin:0;}#test{height:100%;}</pre><br/>
+        <h4>16.如何让某个元素距离窗口上右下左4边各10像素？？？</h4>
+        <span>第一种</span> <pre>html,body{height:100%;margin:0;}html{_padding:10px;}#test{position:absolute;top:10px;right:10px;bottom:10px;left:10px;_position:static;_height:100%;}</pre><br/>
+        <h4>17.如何去掉超链接的虚线框？？？</h4>
+        <span>第一种</span> <pre>a{outline:none;}html,body{height:100%;margin:0;}#test{height:100%;}</pre><br/>
+        <a style="outline: none" href="#">123</a>
+    </div>
+    <div >
+        <h4>18.如何容器透明，内容不透明？？</h4>
+        <span>第一种</span> <pre>.outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;}.inner{width:200px;height:200px;margin-top:-200px;}</pre><br/>
+        <div style="margin-bottom: 0px" class="outer">我是透明的容器</div>
+        <div style="margin-bottom: 0px" class="inner">我是不透明的内容</div>
+        <span>第二种</span> <pre>.outer{width:200px;height:200px;background:rgba(0,0,0,.2);background:#000\9;filter:alpha(opacity=20)\9;}.outer .inner{position:relative\9;}
+</pre><br/>
+        <div class="outer2">
+            <div class="inner2">我是不透明的内容</div>
+        </div>
+    </div>
+    <div >
+        <h4>19.如何让整个页面水平居中？？</h4>
+        <span>第一种</span> <pre>body{text-align:center;}#test{width:960px;margin:0 auto;text-align:left;}</pre><br/>
+        <h4>20.为什么容器的背景色没显示出来？为什么容器无法自适应内容高度？？</h4>
+        <span>第一种</span> <pre>清除浮动，方法请参考本页第9条</pre><br/>
+        <h4>21.如何做1像素细边框的table？？</h4>
+        <span>第一种</span> <pre>#test{border-collapse:collapse;border:1px solid #ddd;}#test th,#test td{border:1px solid #ddd;}</pre><br/>
+        <span>第二种</span> <pre>#test{border-spacing:1px;background:#ddd;}#test tr{background:#fff;}</pre><br/>
+        注意;IE7及更早浏览器不支持border-spacing属性，但是可以通过table的标签属性cellspacing来替代。
+        <h4>22.如何使页面文本行距始终保持为n倍字体大小的基调？？</h4>
+        <span>第一种</span> <pre>body{line-height:n;}</pre><br/>
+        <h4>23.标准模式Standard mode和怪异模式Quirks mode下的盒模型区别？？</h4>
+        <span>第一种</span> <pre>标准模式下：Element width = width + padding + border怪异模式下：Element width = width</pre><br/>
+        注意：相关资料请参阅CSS3属性box-sizing
+    </div>
+    <div >
+        <h4>24.以图换字的几种方法及优劣分析？？</h4>
+        <span>使用text-indent的负值，将内容移出容器</span> <pre>test13{width:200px;height:50px;text-indent:-9999px;background:#eee url(*.png) no-repeat;}</pre><br/>
+        <div id="test13">以图换字之内容负缩进法</div>
+        <span>使用display:none或visibility:hidden将内容隐藏；</span> <pre>.test14{width:400px;height:80px;background:#eee url(Header_Logo_1.png) no-repeat;}.test14 span{visibility:hidden;/* 或者display:none */}</pre><br/>
+        <div id="test14"><span>以图换字之内容隐藏法</span></div>
+        <span>使用padding将内容挤出容器之外；</span> <pre> #test15{width:400px;height:0px;padding:50px;background:#eee url(Header_Logo_1.png) no-repeat;}</pre><br/>
+        <div id="test15"><span>以图换字之内容隐藏法</span></div>
+        <span>使用line-height将内容挤出容器之外；</span> <pre> #test16{width:400px;height:80px;line-height:12;background:#eee url(Header_Logo_1.png) no-repeat;}</pre><br/>
+        <div id="test16"><span>以图换字之内容隐藏法</span></div>
+        <span>使用超小字体和文本全透明法；</span> <pre> #test17{overflow:hidden;width:200px;height:50px;font-size:0;line-height:0;color:rgba(0,0,0,0);background:#eee url(*.png) no-repeat;}</pre><br/>
+        <div id="test17"><span>以图换字之超小字体+文本全透明法</span></div>
+    </div>
+    <div >
+        <h4>25.为什么2个相邻div的margin只有1个生效？？</h4>
+
+    <pre style="color: red">
+          .box1{margin:10px 0;}.box2{margin:20px 0;}
+        本例中box1的底部margin为10px，box2的顶部margin为20px，但表现在页面上2者之间的间隔为20px，而不是预想中的10+20px=30px，结果是选择2者之间最大的那个margin，我们把这种机制称之为“外边距合并”；外边距合并不仅仅出现在相邻的元素间，父子间同样会出现。
+        简单列举几点注意事项:
+　       外边距合并只出现在块级元素上；
+　      浮动元素不会和相邻的元素产生外边距合并；
+  　   绝对定位元素不会和相邻的元素产生外边距合并；
+　    内联块级元素间不会产生外边距合并；
+　  根元素间不会不会产生外边距合并（如html与body间）；
+　  设置了属性overflow且值不为visible的块级元素不会与它的子元素发生外边距合并；
+    </pre>
+        <div class="box1">box1</div>
+        <div class="box2">box2</div>
+    </div>
+</div>
+
+
+</body>
+</html>

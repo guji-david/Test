@@ -1,0 +1,27 @@
+.page{
+    bottom: 0;
+    padding-top: 200px;
+    positioan: absolute;
+    text-align: center;
+    top:0;
+    width: 100%;
+}
+.page h1{
+    font-size: 60px;
+}
+.page a{
+    margin-top: 50px;
+}
+.hello{
+    background: #00D0BC;
+    color: #fff;
+}
+.list{
+    background: #E59400;
+    color: #fff;
+}
+@keyframes rollFall {
+    0%{
+        transform:rotateZ(0deg);
+    }
+}

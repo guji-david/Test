@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>字体</title>
+</head>
+<style>
+   /* 1、如果你的项目中是英文网站，而且项目中的Logo，Tags等应用到较多的这种特殊字体效果，我建议你不要使用图片效果，
+   而使用@font-face，但是你是中文网站，我觉得还是使用图片比较合适，因为加载英文字体和图片没有多大区别，
+   但是你加载中文字体，那就不一样了，因为中文字体太大了，这样会影响到项目的某些性能的优化；
+
+    2、致命的错误，你在@font-face中定义时，文件路径没有载对；
+
+    3、你只定义了@font-face，但并没有应用到你的项目中的DOM元素上；*/
+    @font-face {
+        font-family: 'YourWebFontName';
+        src: url('YourWebFontName.eot'); /* IE9 Compat Modes */
+        src: url('YourWebFontName.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('YourWebFontName.woff') format('woff'), /* Modern Browsers */
+        url('YourWebFontName.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('YourWebFontName.svg#YourWebFontName') format('svg'); /* Legacy iOS */
+    }
+</style>
+<body>
+
+</body>
+</html>

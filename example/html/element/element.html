@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>element</title>
+    <link rel="stylesheet" href="element-ui/index.css">
+</head>
+<body>
+<div id="aaa">
+    <el-radio class="radio" v-model="radio" label="1">备选项</el-radio>
+    <el-radio class="radio" v-model="radio" label="2">备选项</el-radio>
+    <br>
+    <el-radio-group v-model="radio2"size="small">
+        <el-radio :label="3">备选项</el-radio>
+        <el-radio :label="6" >备选项</el-radio>
+        <el-radio :label="9">备选项</el-radio>
+    </el-radio-group>
+    <el-button type="primary" :loading="true">加载中</el-button>
+    <el-radio-group v-model="radio3"size="small">
+       <!-- <el-radio-button :label="el"  v-for="el in radioList" :change="radioChange(el)"></el-radio-button>-->
+       <!-- <el-radio-button label="北京"></el-radio-button>
+        <el-radio-button label="广州"></el-radio-button>
+        <el-radio-button label="深圳" ></el-radio-button>-->
+    </el-radio-group>
+
+    <el-button type="primary" :plain="true">加载中</el-button>
+    <el-button type="primary" :plain="false">加载中</el-button>
+    <el-button type="primary" :autofocus="true" :plain="true">加载中</el-button>
+    <el-button type="primary" :autofocus="false" :plain="true">加载中</el-button>
+
+    <el-switch
+            v-model="value1"
+            on-text="开"
+            off-text="关">
+    </el-switch>
+    <el-switch
+            v-model="value2"
+            on-color="#13ce66"
+            off-color="#ff4949">
+    </el-switch>
+    <div class="block">
+        <span class="demonstration">默认</span>
+        <el-slider v-model="value4"></el-slider>
+    </div>
+    <div class="block">
+        <span class="demonstration">自定义初始值</span>
+        <el-slider v-model="value5"></el-slider>
+    </div>
+    <div class="block">
+        <span class="demonstration">禁用</span>
+        <el-slider v-model="value6" disabled></el-slider>
+    </div>
+    <div class="block">
+        <span class="demonstration">默认不区分颜色</span>
+        <el-rate v-model="value7"></el-rate>
+    </div>
+    <div class="block">
+        <span class="demonstration">区分颜色</span>
+        <el-rate
+                v-model="value8"
+                :colors="['#f00', '#ff0', '#f0f ']"
+                show-text
+                disabled
+                text-template="{value}">
+        </el-rate>
+    </div>
+    <el-checkbox-group v-model="checkList">
+        <el-checkbox label="全选"></el-checkbox>
+        <el-checkbox label="复选框 A"></el-checkbox>
+        <el-checkbox label="复选框 B"></el-checkbox>
+        <el-checkbox label="复选框 C"></el-checkbox>
+    </el-checkbox-group>
+</div>
+
+<script src="js/vue.js"></script>
+<script src="element-ui/index.js"></script>
+<script src="js/vue01.js"></script>
+</body>
+</html>

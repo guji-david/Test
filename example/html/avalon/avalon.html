@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div ms-controller='qinerg'>
+    <input type="text" ms-duplex="test"/>
+    {{test}}
+    <p >
+        <input ms-repeat="sexList"type="radio" ms-duplex-string="el.key" value="sex">
+        <span ms-text="el.value"></span>
+    </p>
+
+    <P>{{sex}}</P>
+
+    <p>
+        <input type="checkbox" ms-duplex-string="lang" value="#C">#C
+        <input type="checkbox" ms-duplex-string="lang" value="java">java
+        <input type="checkbox" ms-duplex-string="lang" value="ruby">ruby
+        <input type="checkbox" ms-duplex-string="lang" value="javascript">javascript
+    </p>
+    <p>{{langtext}}</P>
+
+</div>
+
+<div ms-controller='model'>
+    <select ms-duplex="selectModel">
+        <option value="aaa" >aaa</option>
+        <option value="bbb"selected>bbb</option>
+        <option value="ccc">ccc</option>
+    </select>
+    <P>{{selectModel}}</P>
+</div>
+
+
+
+
+
+
+<script type="text/javascript"src="avalon.js"></script>
+<script>
+    vm = avalon.define({
+        $id: "qinerg",
+        test:"",
+        sex:"",
+      sexList:[
+          {
+              key: 1,
+              value: "男"
+          },
+          {
+              key: 2,
+              value: "女"
+          },
+          {
+              key: 3,
+              value: "动物"
+          }
+
+      ]
+
+    });
+   /* qinerg.$watch("sex", function(value, oldValue) {
+        console.log("sex--newvalue->"+value+"sex--oldValue->"+oldValue);
+    });
+    var model = avalon.define("model", function(vm) {
+        vm.selectModel="ccc"
+    });
+    model.$watch("selectModel", function(value, oldValue) {
+        console.log("selectModel--newvalue->"+value+"sex--oldValue->"+oldValue);
+    });*/
+
+    var a=0.1;
+    var b=0.2;
+    var c=a+b;
+    var ret=(a+b).toFixed(2);
+    alert(ret);
+    alert(c);
+
+
+</script>
+</body>
+</html>

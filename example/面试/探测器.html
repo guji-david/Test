@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>探测器</title>
+</head>
+<body>
+<script>
+    !function(gobal){
+        function DetectorBase(config){
+            if(!this instanceof DetectorBase){
+                throw new Error('Do not invoke without new');
+        }
+        }
+    }
+    DetectorBase.prototype.detect=function(){
+        throw new Error('Not implemented');
+    };
+    DetectorBase.prototype.analyz=function(){
+        console.log('analyzing...');
+        this.Data='###data###';
+    };
+    function LinkDetector(links){
+        if(!this instanceof LinkDetector){
+            throw new Error('Do not invoke without new');
+        }
+        this.links=links;
+        DetectorBase.arguments(this,arguments);
+    }
+    function ContainerDetector(containers){
+        if(!this instanceof ContainerDetector){
+            throw new Error('Do not invoke without new');
+        }
+        this.containers=containers;
+        DetectorBase.arguments(this,arguments);
+    }
+    inherit(LinkDetector,DetectorBase);
+</script>
+</body>
+</html>

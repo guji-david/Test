@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //面值转换成转盘下标
+    function moneyToIndex(type,money){
+        if(type==0){
+            switch(money){
+                case 1:
+                    document.writeln("show 1!!");
+                    return 1;
+                case 2:
+                    document.writeln("show 2!!");
+                    return 2;
+                case 3:
+                    document.writeln("show 13333333333333333333!!");
+                    return 13;
+                default:
+                    document.writeln("show others!!");
+                    return 4;
+            }
+        }else{
+            switch(money){
+                case 1:
+                    document.writeln("show 4!!");
+                    return 1;
+                case 2:
+                    document.writeln("show 5!!");
+                    return 2;
+                case 3:
+                    document.writeln("show 2333333333333!!");
+                    return 23;
+                default:
+                    document.writeln("show others!!");
+                    return 4;
+            }
+        }
+
+    }
+    moneyToIndex(0,3);
+    console.log( moneyToIndex(0,3));
+    moneyToIndex(1,3);
+    console.log( moneyToIndex(1,3));
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>任意一个元素添加一个透明遮罩</title>
+    <style>
+        #target {
+            width: 300px;
+            height: 300px;
+            margin: 40px auto;
+            background-color: tomato;
+        }
+    </style>
+
+
+</head>
+<body>
+        <div id="target">123</div>
+        <script type="text/javascript">
+            var target =document.getElementById("target");
+            (function addMask(elem, opacity) {
+                opacity = opacity || 0.2;
+                var rect = elem.getBoundingClientRect();
+                var style = getComputedStyle(elem, null);
+                var mask = document.createElement('div');
+                mask.style.position = 'absolute';
+                var marginLeft = parseFloat(style.marginLeft);
+//                mask.style.left = (elem.offsetLeft-marginLeft) + 'px';
+                mask.style.left = elem.offsetLeft + 'px';
+                var marginTop = parseFloat(style.marginTop);
+//                mask.style.top = (elem.offsetTop - marginTop) + 'px';
+                mask.style.top = marginTop + 'px';
+                mask.style.zIndex = 9999;
+                mask.style.opacity = '' + opacity;
+                mask.style.backgroundColor = '#000';
+
+             /*   mask.style.width = (parseFloat(style.marginLeft) +
+                        parseFloat(style.marginRight) + rect.width) + 'px';
+                mask.style.height = (parseFloat(style.marginTop) +
+                        parseFloat(style.marginBottom) + rect.height) + 'px';*/
+                console.log(rect.width);
+                mask.style.width =
+                        parseFloat( rect.width) + 'px';
+                mask.style.height =
+                        parseFloat( rect.height) + 'px';
+
+                elem.parentNode.appendChild(mask);
+            })(target);
+
+
+
+           /* addMask(target);
+
+            target.addEventListener('hover', function () {
+                console.log('click');
+            }, false);*/
+        </script>
+</body>
+</html>

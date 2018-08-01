@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="todo in todos">
+            {{ todo.text }}  {{ todo.name }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="item in items">
+            {{ parentMessage }}  - {{ item.message }}
+        </li>
+    </ul>
+
+
+    <ul>
+        <template v-for="item in items">
+            <li>{{ item.message }}</li>
+            <li class="divider"></li>
+        </template>
+    </ul>
+
+    <div v-for="item in items" track-by="_uid">
+        <!-- content -->
+    </div>
+
+    <div @click="test()">按钮click</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  vm=new Vue({
+        el: '#app',
+        data: {
+            testList:[],
+            todos: [
+                { text: '菜鸟教程',name:'12314' },
+                { text: 'www.runoob.com',name:'12316' },
+                { text: 'www.w3cschool.cc',name:'12317' }
+            ],
+            parentMessage: '菜鸟教程官网',
+            items: [
+                { message: 'www.runoob.com' },
+                { message: 'www.w3cschool.cc' }
+            ],
+            items2: [
+                { _uid: '88f869d' },
+                { _uid: '7496c10' }
+            ]
+        },
+        methods:{
+            test:function(){
+                console.log(vm.testList.length);
+            }
+        }
+    })
+</script>
+</body>
+</html>

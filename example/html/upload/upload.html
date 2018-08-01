@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>图片上传</title>
+</head>
+<style>
+    div{  width: 100%;  }
+    .logo img{ display: block;margin: 0 auto;}
+    .upload{
+        position: relative;
+        width: 80px;
+        height: 18px;
+        line-height: 18px;
+        background-color: #2fc7c9;
+        text-align: center;
+        color: #fff;
+        padding: 0px 5px;
+        -webkit-border-radius:2px;
+        border-radius:2px;
+        margin: 0 auto;
+    }
+    .upload form{ width: 100%;position: absolute;left: 0;top: 0;opacity: 0;filter:alpha(opacity=0);}
+    .upload form input{ width: 100%;}
+</style>
+<body>
+        <div class="logo">
+            <img src="../../img/love.png" />
+        </div>
+        <div class="upload">
+            <p>上传图片</p>
+            <form id="uploadForm"enctype="multipart/form-data" method="post" action="http://10.1.0.71:8081/file_upload">
+                <input type="file"name="imageFile"id="imageFile"onchange="fileSelected()"/>
+            </form>
+        </div>
+        <script >
+            var iMAXFilesize=2097152;//2M
+            window.fileSelected=function(){
+/*                var oFile=document.getElementById("imageFile").files[0];//读取文件
+                var rFile=/^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;//i代表忽略大小写
+                if(!rFile.test(oFile.type)){alert(1111);return;}
+                if(!oFile.size>iMAXFilesize){alert(222222);return;}*/
+                    alert("sss");
+                var vFD=new FormData(document.getElementById("uploadForm"));//请求建立和数据
+                var oXHR=new XMLHttpRequest();
+                oXHR.addEventListener('load',function(resUpload){},true);
+                oXHR.addEventListener('error',function(){},false);
+                oXHR.addEventListener('abort',function(){},false);
+                oXHR.open('post',"http://10.1.0.71:8081/file_upload");
+                oXHR.send(vFD);
+            };
+
+        </script>
+</body>
+</html>
