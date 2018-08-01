@@ -73,9 +73,9 @@
    document.body.appendChild(iframe);
    xArray = window.frames[window.frames.length-1].Array;
    var arr = new xArray("1","2","3","4","5");//这个写法IE大哥下是不支持的，FF下才有
-   alert(arr instanceof Array); // false
-   alert(arr.constructor === Array); // false
-   alert(is_array2(arr)); // true
+   alert(arr instanceof Array);
+   alert(arr.constructor === Array);
+   alert(is_array2(arr));
 
 
 </script>

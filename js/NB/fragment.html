@@ -9,8 +9,11 @@
 <p id="demo">单击按钮更改列表项,使用createDocumentFragment方法,然后在列表的最后一个孩子添加列表项。</p>
 <button onclick="myFunction()">点我</button>
 <script type="text/javascript">
+    console.log(document.getElementsByTagName("LI")[0])
     function myFunction(){
+
         var d=document.createDocumentFragment();
+        console.log(d)
         console.log(document.getElementsByTagName("LI")[0])
         d.appendChild(document.getElementsByTagName("LI")[0]);
         d.childNodes[0].childNodes[0].nodeValue="Milk";
