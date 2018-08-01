@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments</title>
+</head>
+<body>
+<script type="text/javascript">
+    function a(b,c,d) {
+        console.log(arguments.length+','+this.length);
+        console.log(this);
+    }
+    a.call(a);
+    a();
+    a(1,2,3)
+</script>
+</body>
+</html>

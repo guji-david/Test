@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>algorithm</title>
+</head>
+<body>
+<script>
+    /*-----------------------------数组Array--------------------------------*/
+//    1.--映射Map
+    var map=new Map();
+    map.set("name","mapWanxin");
+    if(map.has("name")){
+        console.log(map.get("name"));
+    }
+    map.delete("name");
+//    2.--集合Set
+    var set1=new Set(["name1","name2","name3"]);
+    set1.add("name");
+    if(set1.has("name")){
+        console.log(set1.size);
+        set1.delete("name");
+        set1.clear();
+        console.log(set1.size);
+    }
+    set1=new Set(["name1","name2","name3"]);
+    var set2=new Set(["name1","name3","name5"]);
+//    并集
+    let union=new Set([...set1,...set2]);
+    console.log(union);
+//    交集
+    let intersect=new Set([...set1].filter(x=>set2.has(x)));
+    console.log(intersect);
+//    差集
+    let difference=new Set([...set1].filter(x=>!set2.has(x)));
+    console.log(difference);
+    /*-----------------------------js十大排序算法详解--------------------------------*/
+//    冒泡排序
+    function bubbleSort(arr) {
+        for(var i=0,len=arr.length;i<len;i++){
+            for(var j=0;j<len-1-i;j++){
+                if(arr[j]>arr[j+1]){
+                    var temp=arr[j+1];
+                    arr[j+1]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+//    选择排序
+    function selectSort(arr) {
+        var minIndex;
+        for(var i=0,len=arr.length;i<len-1;i++){
+            minIndex=i;
+            for(var j=i+1;j<len;j++){
+                if(arr[j]<arr[minIndex]){
+                    minIndex=j;
+                }
+                var temp=arr[i];
+                arr[i]=arr[minIndex];
+                arr[minIndex]=temp;
+            }
+        }
+        return arr;
+    }
+//    插入排序
+    function insertionSort(arr) {
+        for(var i=0,len=arr.length;i<len;i++){
+           var key=array[i];
+           var j=i-1;
+           while (array[j]>key){
+               array[j+1]=array[j];
+           }
+            array[j+1]=key;
+        }
+        return arr;
+    }
+</script>
+</body>
+</html>

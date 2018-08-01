@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protoype</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*----------------------------1.创建对象-------------------------------------*/
+  /*  var Person=function () {
+        var name="eavan";//私有属性
+        function checkName() {};//私有方法
+        this.myName="gaof";//共有属性
+        this.myFrends=["aa","bb","cc"];
+        this.copy=function () {}//共有方法
+        this.getName=function () {
+            return name;
+        }
+    };
+    Person.isChinese=true;
+    Person.prototype.sex="man";
+    Person.prototype.frends=["11","22","33"];
+    Person.prototype.isBoy=function () {};
+    var person1=new Person();
+    person1.frends.push("dd");
+    console.log(person1.frends);
+    var person2=new Person();
+    person2.frends.push("ee");
+    person2.sex="woman";
+    console.log(person1.sex);
+    console.log(person2.sex);
+    console.log(person2.frends);
+    console.log(person1.hasOwnProperty("sex"));
+    console.log(person2.hasOwnProperty("sex"));*/
+    /*----------------------------2.继承-------------------------------------*/
+   /* function Super() {
+        this.val=true;
+        this.arr=["a"];
+    }
+    function Sub() {
+
+    }
+    Sub.prototype=new Super();
+//    Sub.prototype={
+//
+//        val:function () {
+//            return "1111111";
+//        }
+//    };
+    var sub=new Sub();
+    console.log(sub.val)
+*/
+   /*function Super() {
+       this.friends=["peng","gao"];
+   }
+   function Sub() {}
+   Sub.prototype=new Super();
+   var sub1=new Sub();
+   var sub2=new Sub();
+   sub1.friends.push("111111");
+   console.log(sub2.friends);*/
+
+  /* function Super() {
+       this.val=true;
+       this.arr=["a"];
+   }
+   function Sub() {
+       Super.call(this);
+   }
+   var sub=new Sub();
+   console.log(sub.val);*/
+
+  /* function Super() {
+       this.val="true1";
+       this.arr=["a"];
+   }
+   function Sub() {
+       Super.call(this);
+   }
+    Sub.prototype=new Super();
+    Sub.prototype.constructor=Sub();
+    var sub=new Sub();
+   console.log(sub.val);*/
+  function inheritObject(obj) {
+      var F=function () {};
+      F.prototype=obj;
+      return new F();
+  }
+</script>
+</body>
+</html>

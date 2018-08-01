@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* for(var i=0;i<3;i++){
+        setTimeout(function () {
+            console.log('timeout'+i);
+        })
+    }
+    new Promise(function (resolve) {
+        console.log('promise1');
+        for(var i=0;i<1000;i++){
+           i=99&&resolve();
+        }
+        console.log('promise2')
+    }).then(function () {
+        console.log('then1');
+    })
+    console.log('global1');*/
+    function want() {
+        console.log('你想要的代码');
+    }
+    function fn(want) {
+        console.log('一大堆代码');
+        want&&want()
+    }
+//    fn(want);
+
+  /*  try{
+        setTimeout(function () {
+            JSON.parse("{'a':'1'}")
+        },0)
+
+    }catch (ex){
+        console.log(ex);
+    }*/
+
+        function fnES6(num) {
+            return new Promise(function (resolve,reject) {
+                if(typeof num=='number'){
+                    resolve();
+                }else {
+                    reject();
+                }
+            }).then(function () {
+                console.log('参数是一个number值');
+            }).then(null,function () {
+                console.log('参数不是一个number值');
+            })
+        }
+//   fnES6(9);
+//   fnES6("hah");
+
+        function Promise(fn) {
+            var state='pending',
+             value=null,
+            callbacks=[];
+            this.then=function (onFulfilled) {
+                if(state==='pending'){
+                    callbacks.push(onFulfilled);
+                    return this;
+                }
+                onFulfilled(value);
+                return this;
+            };
+            function resolve(newValue) {
+                value=newValue;
+                state='fulfilled';
+                setTimeout(function () {
+                    callbacks.forEach(function (callback) {
+                        callback(newValue);
+                    })
+                },0)
+
+            }
+            fn(resolve);
+        }
+//      1.极简Promise雏形
+        function Prosmise(fn) {
+            var value=null;
+            callbacks=[];//callbacks为数组,因为可能同时有很多个回调
+            this.then=function (onfufilled) {
+                callbacks.push(onfufilled);
+            };
+            function resolve(value) {
+                callbacks.forEach(function (callback) {
+                    callback(value);
+                })
+            }
+            fn(resolve)
+        }
+//     1. 如果promise内部的函数是同步函数,我们要加入一些处理,保证resolve执行之前,then方法已经注册完所有的回调;
+//     2.通过setTimeout机制,将resolve中执行回调的逻辑放置到JS任务队列末尾,以保证在resolve执行时,then方法的回调函数已经注册成功
+
+   /*(function test() {
+       setTimeout(function() {console.log(4)}, 0);//1111.遇到setTimeout,交给其他模块执行,执行完后回调放入macro-task中
+//     77777.  micro-task执行完毕，开始执行macro-task中的回调函数，输出4。
+       new Promise(function executor(resolve) {//2222.遇到Promise,立即执行里面的function，输出1。
+           console.log(1);
+           for( var i=0 ; i<10000 ; i++ ) {
+               i == 9999 && resolve();//3333. 循环开始，遇到resolve()，修改Promise状态为fulfill。继续执行，输出2。
+           }
+           console.log(2);
+       }).then(function() {//4444.遇到then，将回调放入micro-task中。
+           console.log(5);//6666.call stack执行完毕了。开始执行micro-task中的回调函数，输出5。
+       });
+       console.log(3);//5555.继续执行，输出3
+   })()//1 2 3 5 4
+//    8888 结束*/
+
+
+    function test(x,y){
+        y=y||'world';
+        console.log("x--->"+x+"  y------>"+y)
+    }
+
+   test(0,0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

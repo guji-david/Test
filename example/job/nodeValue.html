@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>元素节点、属性节点、文本节点的测试</title>
+    <meta charset="UTF-8">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+
+
+</head>
+
+<body>
+
+节点分三类:
+1: 元素节点
+2：属性节点
+3：文本节点
+<ul id="fruit" name="水果" width="80px;">
+
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>梨子</li>
+    <li>葡萄</li>
+
+</ul>
+<button id="btn1">点我</button>
+<script type="text/javascript">
+
+    window.onload = function(){
+
+        var btnNode = document.getElementsByTagName("button");
+        var fruitNode = document.getElementById("fruit");
+
+        //元素节点 ul 为元素节点
+        var ulNode = document.getElementsByTagName("ul");
+
+        //属性节点  name="水果" 为属性节点
+        var attrNode = document.getElementById("fruit").getAttributeNode("name");
+        var attr2Node = document.getElementById("fruit").getAttributeNode("width");
+
+
+        //文本节点  点我
+        var textNode = document.getElementById("btn1").firstChild;  //注意这里获取文本节点的方式
+
+
+        btnNode[0].onclick = function(){
+            console.log(fruitNode.getElementsByTagName("li").length);
+
+            //以下右边注释为运行的结果
+            //获取元素节点的三要素:nodeType,nodeName,nodeValue
+            console.log(ulNode[0].nodeType);  //1
+            console.log(ulNode[0].nodeName);  //UL
+            console.log(ulNode[0].nodeValue); //null
+
+            //获取属性节点的三要素:nodeType,nodeName,nodeValue
+            console.log(attrNode.nodeType);  //2
+            console.log(attrNode.nodeName);  //name
+            console.log(attrNode.nodeValue); //水果
+
+            console.log(attr2Node.nodeType);  //2
+            console.log(attr2Node.nodeName);  //width
+            console.log(attr2Node.nodeValue); //80px;
+
+            //获取文本节点的三要素:nodeType,nodeName,nodeValue
+            console.log(textNode.nodeType);  //3
+            console.log(textNode.nodeName);  //#TEXT
+            console.log(textNode.nodeValue); //点我
+
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<script type="text/javascript">
+    //--------------第一种情况————————————
+   /* function fn(num){
+        this.count++;
+    }
+    fn.count=0;
+    for(var i=0;i<3;i++){
+        fn(i);
+    }
+    console.log(fn.count);*/
+    //--------------第二种情况————————————
+    /* function fn(num){
+     fn.count++;
+     }
+     fn.count=0;
+     for(var i=0;i<4;i++){
+     fn(i);
+     }
+     console.log(fn.count);*/
+    //--------------第三种情况————————————
+  /* var data={
+       count:0
+   }
+    function fn(num){
+        data.count++;
+    }
+
+    for(var i=0;i<3;i++){
+        fn(i);
+    }
+    console.log(data.count);*/
+    //-------默认的绑定规则-------window————————————----
+   /* function fn(){
+        console.log(window===this);
+    }
+    fn();*/
+    //---------隐式绑定规则-----上下文1————————————----
+   /* var obj={
+        a:1,
+        fn:function(){
+            console.log(this.a);
+        }
+    }
+    obj.fn();*/
+    //--------隐式绑定规则------上下文2————————————-----
+  /*  function fn(){
+        console.log(this.a);
+    }
+    var obj={
+        a:2,
+        fn:fn
+    }
+    obj.fn();
+*/
+    /*结论：this的绑定，不与函数定义的位置有关，而是与调用者与调用方式有关*/
+    //--------多层对象调用this的指向————————————-----
+  /*  var a="window";
+    function fn(){
+        console.log("----"+this);
+        console.log("----"+this.a);
+    };
+    var obj={
+        a:1,
+        obj2:obj2
+    };
+    var obj2={
+        a:2,
+        obj3:obj3
+    };
+    var obj3={
+        a:3,
+        fn:fn()
+    };
+    obj.obj2;*/
+  function log(val) {
+      console.log(val)
+  }
+    var obj={
+        fn:function (a,b) {
+            log(this)
+        }
+    }
+    obj.fn(3,4);
+    var fn=function (a,b) {
+        log(this,a,b)
+    }
+    var r={},g={},b={};r.method=fn;
+    //    r.method=(g,b);
+    fn.call(r,g,b);
+    r.method.call(r,g,b);
+//
+</script>
+<body>
+
+</body>
+</html>

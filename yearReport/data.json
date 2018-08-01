@@ -1,0 +1,48 @@
+{
+  "tender":  {
+  "2017Q4": "1865.23",
+  "USER_ID": "1105224200399907938",
+  "2017Q1": "1138.28",
+  "MOBILE": "135****4948",
+  "2016Q2": "1591.31",
+  "2016Q3": "1042.1",
+  "2016Q1": "351.74",
+  "2017Q3": "1462.58",
+  "2017Q2": "2249.28",
+  "2016Q4": "1053.2"
+},
+  "earn": {
+    "2017Q4": "900",
+    "USER_ID": "1105224200399907938",
+    "2017Q1": "129000",
+    "MOBILE": "135****4948",
+    "2016Q2": "33400",
+    "2016Q3": "16000",
+    "2016Q1": "152800",
+    "2017Q3": "267700",
+    "2017Q2": "81000",
+    "2016Q4": "101600"
+  },
+  "summary": {
+    "SUTOUSHOU": 0
+  },
+  "CNT": 0,
+  "FIRST_INTEREST_AMOUNT": "",
+  "USER_ID": "16020514415175185968",
+  "FIRST_INTEREST_TIME": "",
+  "INVITER_USER_NAME": "",
+  "MOBILE": "15032239872",
+  "SCORE": "0.01%",
+  "SHAKE_TIMES": 0,
+  "INVITER_USER_MOBILE": "",
+  "INVITER_NUM": 1,
+  "JINTOUSHOU": 0,
+  "USER_TYPE": "not_offline",
+  "SHENTOUSHOU": 0,
+  "CUM_REWARDS": 0,
+  "CREATE_TIME": "2016/2/5 14:41",
+  "FIRST_TENDER_TIME": "",
+  "SHARE_TIMES": 0,
+  "CUM_INTEREST": 0,
+  "CUM_AMOUNT": 0,
+  "FIRST_TENDER_AMOUNT": ""}

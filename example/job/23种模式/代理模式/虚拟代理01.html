@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>虚拟代理01</title>
+</head>
+<body>
+<script>
+    /*-----------------------虚拟代理----------------------------------------*/
+    var myImage=(function(){
+        var imgNode=document.createElement('img');
+        document.body.appendChild(imgNode);
+        return function(src){
+                imgNode.src=src;
+            }
+    })();
+//    myImage.setSrc('Header_Logo_1.png');
+    var proxyImage=(function(){
+        var img=new Image;
+        img.onload=function(){
+            myImage.setSrc(this.src);
+        };
+        return function(src){
+                myImage('菊花图');
+                img.src=src;
+            }
+    })();
+    proxyImage('http://xxx.com/i.png');
+</script>
+</body>
+</html>

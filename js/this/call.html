@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>call And apply</title>
+</head>
+<script type="text/javascript">
+        /*移花接木之----call和apply 主要是解决改变函数中this的指向---*/
+//        ----------------------------------call第一种情况-------------------------------------------
+        //call，apply是Function函数对象自带的两个方法，改变函数的this指向
+      /*  function a(){
+            console.log(this);
+        }
+        a.call();
+        a.call(undefined);
+        a.call('');
+        a.call(1);
+        a.call(true);
+        function b(){}
+        a.call(b);
+       var obj={name:'onepixel'};
+        a.call(obj);
+*/
+//        ----------------------------------call第二种情况-------------------------------------------
+       /* var a={
+            name:'onepixel',
+            say:function (){
+                console.log('Hi,I am function a!');
+            }
+        }
+
+      function b(name){
+          console.log('Post params:'+name);//Post params:test
+          console.log('I am:'+this.name);//I am:onepixel
+          this.say();//Hi,I am function a!
+      }
+        b.call(a,'test');
+*/
+//        ----------------------------------apply第一种情况-------------------------------------------
+
+     /*  function b(x,y,z){
+           console.log(x,y,z);//1 2 3
+       }
+        b.apply(null,[1,2,3]);*/
+//        ----------------------------------apply应用场景一：继承-------------------------------------------
+        /*function Animal(name,weight){
+            this.name=name;
+            this.weight=weight;
+        }
+
+        function Cat(){
+           Animal.call(this,'cat','50');
+           Animal.apply(this,['cat','50']);
+            this.say=function(){
+                console.log('I am '+this.name,'My weight is '+this.weight);
+            }
+        }
+        var cat=new Cat();
+        cat.say();*/
+//                ----------------------------------apply应用场景一：移花接木-------------------------------------------
+       /* function test(){
+            console.log(arguments instanceof  Array,Array.isArray(arguments));
+            Array.prototype.forEach.call(arguments,function(item){
+                console.log(item);
+            })
+        }
+        test(1,2,3,4);
+     var arr=[2,4,6,8,12,3,5];
+   var max= Math.max.apply(null,arr);
+        console.log(max);*/
+
+</script>
+<body>
+
+</body>
+</html>

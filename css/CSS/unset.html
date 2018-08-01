@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unset</title>
+    <style type="text/css">
+        .father{color: red;border: 1px solid black}
+        .children{color: green;border: 1px solid blue}
+        .unset{color: unset;border: unset}
+        .father1{position: relative;width: 320px;height: 200px;color: red;border: 1px solid black;background-color: darkgray}
+        .block{width: 80px;height: 80px;background-color: brown;color: #fff;position: absolute;top: 60px;right: 0}
+        .left-block{left: 0}
+      /*  .right-block{right: 0}*/
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="children">第一个元素</div>
+        <div class="children unset">第二个元素</div>
+
+
+    </div>
+<div class="father1">
+    <span class="block left-block">左模块</span>
+    <span class="block right-block">右模块</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>grid</title>
+    <style>
+        .HolyGrail {  display: flex;  min-height: 100vh;  flex-direction: column;  }
+        header, footer {  flex: 1;  }
+        .HolyGrail-body {  display: flex;  flex: 1;  }
+        @media (max-width: 868px) {
+            .HolyGrail-body {
+                flex-direction: column;
+                flex: 1;
+            }
+            .HolyGrail-nav,
+            .HolyGrail-ads,
+            .HolyGrail-content {
+                flex: auto;
+            }
+        }
+        .HolyGrail-content {  /*
+            flex是flex-grow flex-shrink flex-basis的组合简写，后两个可选
+            flex:1，即flex-grow:1，flex-shrink flex-basis两个取默认值 1和auto。
+            flex:1表示项目的放大比例，如果存在剩余空间，则放大。因为已经定义了左右两个侧边栏宽度，通过该属性，让中间栏占有剩余空间。
+           */  flex: 1;  }
+        .HolyGrail-nav, .HolyGrail-ads { /* 两个边栏的宽度设为12em */  flex: 0 0 12em;  }
+        .HolyGrail-nav { /* 导航放到最左边 */  order: -1;  }
+        .InputAddOn {  display: flex;  }
+        .InputAddOn-field {  flex: 1;  }
+        .Media {  display: flex;  align-items: flex-start;  }
+        .Media-figure {  margin-right: 1em;  }
+        .Media-body {  flex: 1;  }
+    </style>
+</head>
+<body class="HolyGrail">
+<header>header</header>
+<div class="HolyGrail-body">
+    <main class="HolyGrail-content">HolyGrail-content</main>
+    <nav class="HolyGrail-nav">HolyGrail-nav</nav>
+    <aside class="HolyGrail-ads">HolyGrail-ads</aside>
+</div>
+<footer>footer</footer>
+
+<div class="InputAddOn">
+    <span class="InputAddOn-item">InputAddOn-item</span>
+    <input class="InputAddOn-field">
+    <button class="InputAddOn-item">InputAddOn-item</button>
+</div>
+<div class="Media">
+    <img class="Media-figure" src="" alt="">
+    <p class="Media-body">Media-body</p>
+</div>
+</body>
+</html>

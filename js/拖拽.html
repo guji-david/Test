@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+</head>
+<body>
+<div id="box"></div>
+<style>
+    #box{position: absolute;width: 200px;height: 200px;background: red;}
+</style>
+<script type="text/javascript">
+    window.onload = function (){
+        // 获取元素和初始值
+        var oBox = document.getElementById('box'),
+            disX = 0, disY = 0;
+        // 容器鼠标按下事件
+        oBox.onmousedown = function (e){
+            var e = e || window.event;
+            disX = e.clientX - this.offsetLeft;
+            disY = e.clientY - this.offsetTop;
+//            console.log(this);
+            document.onmousemove = function (e){
+                console.log(e);
+                var e = e || window.event;
+                oBox.style.left = (e.clientX - disX) + 'px';
+                oBox.style.top = (e.clientY - disY) + 'px';
+            };
+            document.onmouseup = function (){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+            return false;
+        };
+    };
+</script>
+</body>
+</html>
