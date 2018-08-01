@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callback</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    1.基本用法
+    function doSomething(callback) {
+//        Call the callback
+        callback('stuff','goes','here');
+    }
+    function foo(a,b,c) {
+        console.log(a+" "+b+" "+c);
+    }
+    doSomething(foo);
+    //    1.基本用法 使用匿名的方式
+    function doSomething1(damsg,callback) {
+        console.log(damsg);
+        if(typeof callback=='function'){
+            callback();
+        }
+
+    }
+    doSomething1("回调函数",function () {
+        console.log('和jQuery的callbacks 形式一样');
+    })
+//    2.高级用法
+    function c(callback) {
+        console.log('c');
+        callback.call(this,'ddd')
+    }
+    c(function (e) {
+        console.log(e);
+    })
+  /*  _$.prototype={
+        bind:function (evt,callback) {
+            var that=this;
+            if(document.addEventListener){
+                this.elements.addEventListener(evt,function (e) {
+                    callback.call(this,that.standadize(e))
+                },false)
+            }else if(document.attachEvent){
+                this.elements.attachComments('on'+evt,function (e) {
+                    callback.call(this,that.standadize(e))
+                },false)
+            }else{
+                this.elements['on'+evt]=function (e) {
+                    callback.call(this,that.standadize(e))
+                }
+            }
+        }
+
+    }*/
+//    3.使用new创建对象,使用回调函数
+  /*  function Thing(name) {
+        this.name=name;
+    }
+    Thing.prototype.doSomething=function (callback,salutation) {
+        callback.call(this,salutation)
+    }
+    function foo(salutation) {
+        console.log(salutation+" "+this.name);
+    }
+    var t=new Thing('Joe');
+    t.doSomething(foo,'Hi');*/
+
+    //    4.回调函数 调试
+    function test(a,callback) {
+        console.log(a);
+        callback();
+    }
+    test("aaaaaaaaaa",function(){
+        console.log("bbbbbbbbbbbbbb");
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美化上传按钮</title>
+    <style>
+        .file{
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            padding: 5px 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent:0 ;
+            line-height: 20px;
+        }
+        .file input{
+            /*防止在各个浏览器中上传按钮的显示不同,给上传按钮设置文字大小*/
+            position: absolute;
+            /*设置上传按钮定位在上面,*/
+            right: -5px;
+            top:-5px;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            cursor: pointer;
+
+        }
+        .file:hover{
+            background: #AADFFD;
+            color: #004974;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<p>默认上传按钮:</p>
+<p>
+    <input type="file" id="file">
+    <img src="" alt=""id="img">
+
+</p>
+<br>
+<br>
+<p>美化后的上传按钮:</p>
+<p>
+    <a href="javascrip:;"class="file">
+        选择文件  <input type="file"title="请选择文件">
+    </a>
+
+</p>
+<script>
+    var oInput=document.getElementById('file');
+    var oImg=document.getElementById('img');
+    oInput.change=function () {
+        var fileData=oInput.file[0];
+        base64(fileData,function (base64Data) {
+            oImg.setAttribute("src",oImg)
+        })
+    }
+    function base64(file,backData) {
+        /*
+        *
+        **/
+        var reader=new FileReader();
+        var image=new Image();
+        var canvas=createCanvas();
+        var ctx=canvas.getContext("2d");
+        reader.onload=function () {
+
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+</script>
+
+</body>
+</html>

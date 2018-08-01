@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_伪类</title>
+</head>
+<body>
+<script type="text/javascript">
+    var Car=function (loc) {
+        var obj=Object.create(Car.prototype);
+        obj.loc=loc;
+        return obj;
+    }
+    Car.prototype.move=function () {
+        this.loc++;
+    }
+</script>
+</body>
+</html>

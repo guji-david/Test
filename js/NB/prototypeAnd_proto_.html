@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototypeAnd_proto_</title>
+</head>
+<body>
+<script>
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+        this.getInfo=function () {
+            console.log( this.name+"is"+ this.age+"years old");
+        }
+    }
+    var will=new Person("will",28);
+    console.log(will);
+    console.log(will.__proto__);
+    console.log(Person.__proto__);
+    console.log("Person.prototype===will.__proto__:-------22222222--->"+Person.prototype===will.__proto__);
+    console.log(Person);
+    console.log("Person===will.constructor:--------->"+Person===will.constructor);
+</script>
+</body>
+</html>

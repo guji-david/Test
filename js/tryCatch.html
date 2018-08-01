@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tryCatch</title>
+</head>
+<body>
+<script type="text/javascript">
+/*-----------------------------------第一题----------------------------------*/
+  /*  try {
+        document.writeln("Beginnng the try block")
+        document.writeln("No exceptions yet")
+        // Create a syntax error
+        ("6 + * 3")
+//        document.writeln("Finished the try block with no exceptions")
+    }catch(err){
+     /!*   document.writeln("111111Exception caught, executing the catch block")
+        document.writeln("22222Error name:-------> " + err.name)
+        document.writeln("333333Error message:--------> " + err.message)*!/
+        window.location.href="http://stackoverflow.com/search?q=[js]+"+err.message;
+//        document.writeln("44444444444Executing after the try-catch statement")
+    }*/
+/*-----------------------------------第二题----------------------------------*/
+   /* while (1){
+        alert("牛逼你把我关了吧!")
+    }*/
+/*-----------------------------------第三题----------------------------------*/
+/*var a=~~1.2;
+console.log(a);
+var b=-3.4>>0;
+console.log(b);
+var c=-3.4;
+console.log(Math.floor(c));
+var time=+new Date();
+console.log(time);
+var test=Math.random()
+console.log(test);
+console.log(test.toString().substring(2).length);
+console.log(test.toString(16));
+console.log(test.toString(16).substring(2).length);
+console.log(test.toString(16).substring(2));
+console.log(test.toString(36));
+console.log(test.toString(36).substring(2).length);
+console.log(test.toString(36).substring(2));*/
+
+  try {
+ // Create a syntax error
+      document.writeln("Beginnng the try block")
+      document.writeln("No exceptions yet")
+      // Create a syntax error
+      ("6 + * 3")
+ //        document.writeln("Finished the try block with no exceptions")
+ }catch(err){
+// window.location.href="http://stackoverflow.com/search?q=[js]+"+err.message;
+      alert(err.message);
+      window.open("https://www.baidu.com/s?ie=UTF-8&wd=js%20"+err.message)
+
+ }
+</script>
+</body>
+</html>
