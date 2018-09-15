@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <title>this</title>
 </head>
+<ul>
+    <li>aaaa</li>
+    <li>aaaa111</li>
+    <li>aaaa222</li>
+    <li>aaaa3333</li>
+    <li>aaaa44</li>
+</ul>
 <script type="text/javascript">
+    //获取所有li的节点
+    var list = document.getElementsByTagName("li");
+    //给每个li绑定事件
+    for(let i = 0;i<list.length;i++) {
+        list[i].onclick = function () {
+            console.log(i)
+        }
+    }
     //--------------第一种情况————————————
    /* function fn(num){
         this.count++;
@@ -41,7 +56,7 @@
     }
     fn();*/
     //---------隐式绑定规则-----上下文1————————————----
-   /* var obj={
+    /*var obj={
         a:1,
         fn:function(){
             console.log(this.a);
@@ -49,33 +64,216 @@
     }
     obj.fn();*/
     //--------隐式绑定规则------上下文2————————————-----
-  /*  function fn(){
+   /* function fn(){
         console.log(this.a);
     }
     var obj={
         a:2,
         fn:fn
     }
-    obj.fn();
-*/
+    obj.fn();*/
     /*结论：this的绑定，不与函数定义的位置有关，而是与调用者与调用方式有关*/
     //--------多层对象调用this的指向————————————-----
-    function fn(){
-        console.log("----"+this.a);
-    };
-    var obj={
-        a:1,
-        obj2:obj2
-    };
-    var obj2={
-        a:2,
-        obj3:obj3
-    };
-    var obj3={
-        a:3,
-        fn:fn()
-    };
-    obj.obj2.obj3.fn();
+    // function fn(){
+    //     console.log("----"+this.a);
+    // };
+    // var obj={
+    //     a:1,
+    //     obj2:obj2
+    // };
+    // var obj2={
+    //     a:2,
+    //     obj3:obj3
+    // };
+    // var obj3={
+    //     a:3,
+    //     fn:fn()
+    // };
+    // console.log(obj.obj2.obj3)
+
+    // var x = 1;
+    // function test(){
+    //     this.x = 0;
+    //     console.log(this.x)
+    //     console.log(this.)
+    // }
+    // test();
+
+    // var x = 2;
+    // function test(){
+    //     this.x = 1;
+    //     console.log(this.x)
+    //     console.log(this)
+    // }
+    // var o = new test();
+    // console.log(this.x)
+
+    // var o = {
+    //     x : 1,
+    //     func : function() {
+    //         console.log(this.x)
+    //         console.log(this)
+    //     },
+    //     test : function() {
+    //         console.log(this)
+    //         // setTimeout(function() {
+    //         //     this.func();
+    //         // }, 100);
+    //         setTimeout(() => { this.func() }, 100);
+    //     }
+    // };
+    // o.test();
+// --------------------------------------this的使用复杂性
+
+    // 1.this this的使用机智复杂，在开发中出问题的根本原因在于：this是在运行是绑定，而不是编写时绑定，this实际值取决于函数调用时的上下文。
+    // this的绑定和函数的声明位置没有关系，只取决于函数的调用方式。在javascript中，当函数调用时，会创建一个活动记录（执行上下文），这个记录
+    //包含在何处调用，函数的调用方法和传入参数等信息，this会记录其中的一个属性。判断this实际绑定值，关键在于分析实际调用的位置。
+
+    // 1。前面说了函数的实际调用位置决定了this的绑定值。在JavaScript中，this有4种绑定规则。
+
+//     1、new绑定
+//     在JavaScript中使用new调用函数会自动执行下面的操作：
+//
+//     （1）创建一个新的对象
+//
+// 　　（2）对新对象执行原型链接
+//
+// 　　（3）新对象会被绑定到函数的this
+//
+// 　　（4）如果函数没有返回其他对象，那么新对象会被返回
+//     4、绑定优先级
+//     4.1、默认绑定优先级最低
+//     默认绑定的优先级最低，这个容易理解。因为当无法使用其他的绑定规则时才会使用默认规则。
+//
+//    4.2、显示绑定优先级高于隐式绑定
+
+    // function foo() {
+    //     console.log(this.a);
+    // }
+    //
+    // var obj1 = {a: 2, foo: foo};
+    // var obj2 = {a: 3, foo: foo};
+    //
+    // obj1.foo();  //  2
+    // obj1.foo.call(obj2);  //  3
+    // 4.3、new绑定优先级高于隐式绑定
+
+    // function foo(something) {
+    //     this.a = something;
+    // }
+    //
+    // var obj1 = {
+    //     foo: foo
+    // };
+    //
+    // var obj2 = {};
+    //
+    // obj1.foo(2);
+    // console.log(obj1.a);  //  2
+    //
+    // obj1.foo.call(obj2, 3);
+    // console.log(obj2.a);  //  3
+    //
+    // var bar = new obj1.foo(4);
+    // console.log(obj1.a);  //  2
+    // console.log(bar.a);  //  4
+
+
+
+
+    // function foo() {
+    //     return (a) => {
+    //         console.log(this.a);
+    //     };
+    // }
+    //
+    // var obj1 = {a:2};
+    // var obj2 = {a:3};
+    //
+    // var bar = foo.call(obj1);
+    // bar.call(obj2);  //  2
+
+
+    // 4.4、new绑定优先级高于显示绑定
+    // function foo(something) {
+    //     this.a = something;
+    // }
+    // var obj1 = {};
+    // var bar = foo.bind(obj1);
+    //
+    // bar(2);
+    // console.log(obj1.a);  //  2
+    //
+    // var baz = new bar(3);
+    // console.log(obj1.a);  //  2
+    // console.log(baz.a);  //  3
+
+
+    // 现在可以根据this绑定优先级判断函数在调用位置实际绑定的值。实际可以按照下面的顺序判断：
+    //
+    // （1、函数是否在new中调用？如果是的话this绑定新创建的对象。调用例子：var bar = new foo()。
+    //
+    // （2、函数是否通过apply、call显示绑定或者bind硬绑定？如果是，this绑定指定的对象。调用例子：var bar = foo.call(obj)。
+    //
+    // （3、函数是否在某个上下文对象中调用（隐式绑定）？如果是，this绑定在上下文对象上。调用例子：var bar = obj.foo()。
+    //
+    // （4、如果都不是的话，使用默认绑定。在严格模式下，this绑定到undefined，在非严格模式下，绑定到全局对象。调用例子：var bar = foo()。
+
+
+    // 5、箭头函数中的this
+    // ES6中引入了箭头函数，箭头函数使用操作符=>定义。箭头函数不使用上面4种th
+
+    // function foo() {
+    //     return (a) => {
+    //         console.log(this.a);
+    //     };
+    // }
+    //
+    // var obj1 = {a:1};
+    // var obj2 = {a:2};
+    // var obj3 = {a:3};
+    //
+    // var bar = foo.call(obj1);
+    // bar.call(obj2);  //  2
+    // bar.call(obj3);  //  2
+
+
+    // function a(){
+    //     var user = "追梦子";
+    //     console.log(this.user); //undefined
+    //     console.log(this); //Window
+    // }
+    // a();
+    // var o = {
+    //     a:10,
+    //     b:{
+    //         // a:12,
+    //         fn:function(){
+    //             console.log(this.a); //undefined
+    //         }
+    //     }
+    // }
+    // o.b.fn();
+    // var o = {
+    //     a:10,
+    //     b:{
+    //         a:12,
+    //         fn:function(){
+    //             console.log(this.a); //undefined
+    //             console.log(this); //window
+    //         }
+    //     }
+    // }
+    // var j = o.b.fn;
+    // j();
+    function fn()
+    {
+        this.user = '追梦子';
+        return null;//{} null undefined 1
+    }
+    var a = new fn;
+    console.log(a.user); //fn {user: "追梦子"}
+
 </script>
 <body>
 

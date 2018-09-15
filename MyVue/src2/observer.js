@@ -12,6 +12,7 @@ Observer.prototype = {
     },
     defineReactive: function(data, key, val) {
         var dep = new Dep();
+
         var childObj = observe(val);
         Object.defineProperty(data, key, {
             enumerable: true,
@@ -19,6 +20,7 @@ Observer.prototype = {
             get: function getter () {
                 if (Dep.target) {
                     dep.addSub(Dep.target);
+
                 }
                 return val;
             },
@@ -45,6 +47,7 @@ function Dep () {
 }
 Dep.prototype = {
     addSub: function(sub) {
+
         this.subs.push(sub);
     },
     notify: function() {

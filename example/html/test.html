@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function fn(n) {
+            let array=[];
+
+            for(let i=0;i<n;i++){
+                let rand=getRand(2,32);
+                if(isIncluded(rand,array)){
+                    i--;
+                }else {
+                    array.push(rand);
+                }
+            }
+            return array;
+        };
+        function isIncluded(element,array) {
+            for(let i=0,len=array.length;i<=len;i++){
+                if(array[i]==element){
+                    return true;
+                }
+            }
+            return false;
+        };
+        function getRand(min,max) {
+            if(min>max){
+                let temp=max;
+                max=min;
+                min=temp;
+            }
+            return Math.floor(Math.random()*(max-min+1)+min);
+
+        };
+        console.log(fn(4))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

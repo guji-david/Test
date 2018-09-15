@@ -9,7 +9,6 @@ function SelfVue (options) {
 
     observe(this.data);
     new Compile(options.el, this);
-    console.log(this)
     options.mounted.call(this); // 所有事情处理好后执行mounted函数
 }
 SelfVue.prototype={

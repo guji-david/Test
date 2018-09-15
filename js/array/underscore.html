@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>underscore</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="js/underscore.js"></script>
+
+<script type="text/javascript">
+var arr=[2,3,4,5,6,343,3,5];
+    console.log(_.first(arr));
+    console.log(_.last(arr));
+    console.log(_.flatten([1, [2], [3, [[4], [5]]]]));
+    var names = ['Adam', 'Lisa', 'Bart'];
+    var scores = [85, 92, 59];
+    console.log(_.zip(names, scores));
+    console.log(_.object(names, scores));
+    var namesAndScores = [['Adam', 85], ['Lisa', 92], ['Bart', 59]];
+
+    console.log(_.unzip(namesAndScores));
+    _.each([1, 2, 3], function (ele, idx) {
+    console.log(idx + ":" + ele);
+});
+console.log(_.map([1, 2, 3], function(num){
+        return num * 3;})
+);
+console.log(
+    _.filter([1, 2, 3, 4, 5, 6], function(num){
+        return num % 2 == 0;
+    })
+);
+console.log(
+    _.reject([1, 2, 3, 4, 5, 6], function(num){
+        return num % 2 == 0;
+    })
+);
+var list = [
+    {title:"AAA",year: 1982},
+    {title:"BBB",year: 1900},
+    {title:"CCC",year: 1982}
+];
+console.log(
+    _.where(list,{year: 1982})
+);
+</script>
+<script type="module">
+    import {addTextToBody} from './js/utils.mjs';
+
+    addTextToBody('Modules are pretty cool.');
+</script>
+</body>
+</html>
