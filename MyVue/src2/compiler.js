@@ -45,8 +45,7 @@ Compile.prototype = {
     },
     compile: function(node) {
         var nodeAttrs = node.attributes;
-        console.log('nodeAttrs')
-        console.log(nodeAttrs)
+
         var self = this;
         Array.prototype.forEach.call(nodeAttrs, function(attr) {
             var attrName = attr.name;

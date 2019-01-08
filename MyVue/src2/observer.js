@@ -19,6 +19,7 @@ Observer.prototype = {
             configurable: true,
             get: function getter () {
                 if (Dep.target) {
+                    console.log(Dep.target);
                     dep.addSub(Dep.target);
 
                 }
@@ -51,7 +52,11 @@ Dep.prototype = {
         this.subs.push(sub);
     },
     notify: function() {
+        // console.log("000-------------------->");
+        // console.log(this.subs);
         this.subs.forEach(function(sub) {
+            // console.log("1111-------------------->");
+            // console.log(sub);
             sub.update();
         });
     }
